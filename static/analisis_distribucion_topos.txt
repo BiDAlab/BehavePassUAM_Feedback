@@ -1,4 +1,4 @@
-Tiempos de Reacción de los Usuarios (ms)
+Tiempos de Reaccion de los Usuarios (ms)
 532.49
 425.94
 6745.99
