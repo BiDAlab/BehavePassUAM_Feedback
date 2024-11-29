@@ -89,7 +89,7 @@ def load_file_from_zip(zip_file, target_file):
         return pd.DataFrame()
     
     except Exception as e:
-        #st.error(f"Ocurrió un error: {e}")
+        st.error(f"Ocurrió un error: {e}")
         return pd.DataFrame()
 
 # Función para cargar varios archivos que tenga zip en diferentes DataFrame
