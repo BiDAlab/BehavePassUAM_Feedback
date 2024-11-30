@@ -116,7 +116,9 @@ def render_summary_tab():
 
 
             # Mostrar el mensaje en el recuadro azul
-            st.markdown(f'<div style="background-color: #e7f3fe; padding: 10px; border-radius: 15px; font-size: 17px;">{info_message}</div>', unsafe_allow_html=True)
+            #st.markdown(f'<div style="background-color: #e7f3fe; padding: 10px; border-radius: 15px; font-size: 17px;">{info_message}</div>', unsafe_allow_html=True)
+            st.markdown(f"""<div style="border: 10px solid #e7f3fe; padding: 10px; border-radius: 15px; font-size: 17px; background-color: transparent;"> {info_message}</div>""",unsafe_allow_html=True)
+    
 
     elif lang == "en": #Versión inglés
         cols = st.columns([1,3,1], vertical_alignment='center')
@@ -150,6 +152,6 @@ def render_summary_tab():
 
 
             # Mostrar el mensaje en el recuadro azul
-            st.markdown(f'<div style="background-color: #e7f3fe; padding: 10px; border-radius: 15px; font-size: 17px;">{info_message}</div>', unsafe_allow_html=True)
-
+            #st.markdown(f'<div style="background-color: #e7f3fe; padding: 10px; border-radius: 15px; font-size: 17px;">{info_message}</div>', unsafe_allow_html=True)
+            st.markdown(f"""<div style="border: 10px solid #e7f3fe; padding: 10px; border-radius: 15px; font-size: 17px; background-color: transparent;"> {info_message}</div>""",unsafe_allow_html=True)
 
