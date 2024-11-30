@@ -77,13 +77,15 @@ else:
     st.error("⚠️ No sé encuentra usuario. Verifica el link o contacta con soporte.")
     st.error(" ⚠️ We could not find the user. Verify the link or contact us.")
     info_message=f"""<p style="text-align:center;"> 🤔 ¿No sábes que es 
-            <a href="https://behavepassuam.humanairesearch.com/es" target="_blank" style="text-decoration:none;">BehavePassUAM</a>? </p> 
-            <p style="text-align:center;"> 👉 <strong>No te quedes con la duda</strong>, entra en nuestra página web 🌐 (<a href="https://behavepassuam.humanairesearch.com/es">https://behavepassuam.humanairesearch.com/es</a>) y descubre de qué se trata 😊</p>"""
-    st.markdown(f'<div style="background-color: #e7f3fe; padding: 10px; border-radius: 15px; font-size: 17px;">{info_message}</div>', unsafe_allow_html=True)
+            <a href="https://behavepassuam.humanairesearch.com/es" target="_blank" style="text-decoration:none; color: inherit; font-weight: bold;"> BehavePassUAM</a>? </p> 
+            <p style="text-align:center;"> 👉 <strong>No te quedes con la duda</strong>, entra en nuestra página web 🌐 (<a href="https://behavepassuam.humanairesearch.com/es" target="_blank" style="text-decoration:none; color: inherit; font-weight: bold;"><u>https://behavepassuam.humanairesearch.com/es</u></a>) y descubre de qué se trata 😊</p>"""
+    
+    st.markdown(f"""<div style="border: 10px solid #e7f3fe; padding: 10px; border-radius: 15px; font-size: 17px; background-color: transparent;"> {info_message}</div>""",unsafe_allow_html=True)
     st.markdown(' ')
     
     info_message_eng=f"""<p style="text-align:center;"> 🤔 Don't know about
-            <a href="https://behavepassuam.humanairesearch.com/en" target="_blank" style="text-decoration:none;">BehavePassUAM</a>? </p> 
-            <p style="text-align:center;"> 👉 Visit out website 🌐 (<a href="https://behavepassuam.humanairesearch.com/en">https://behavepassuam.humanairesearch.com/en</a>) and find out what is all about 😊</p>"""
-    st.markdown(f'<div style="background-color: #e7f3fe; padding: 10px; border-radius: 15px; font-size: 17px;">{info_message_eng}</div>', unsafe_allow_html=True)
+            <a href="https://behavepassuam.humanairesearch.com/es" target="_blank" style="text-decoration:none; color: inherit; font-weight: bold;"> BehavePassUAM</a>? </p> 
+            <p style="text-align:center;"> 👉 Visit out website 🌐 (<a href="https://behavepassuam.humanairesearch.com/es" target="_blank" style="text-decoration:none; color: inherit; font-weight: bold;"><u>https://behavepassuam.humanairesearch.com/es</u></a>) and find out what is all about 😊</p>"""
+    st.markdown(f"""<div style="border: 10px solid #e7f3fe; padding: 10px; border-radius: 15px; font-size: 17px; background-color: transparent;"> {info_message_eng}</div>""",unsafe_allow_html=True)
+    
 ### End of get params ###
