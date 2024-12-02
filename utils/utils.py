@@ -92,8 +92,7 @@ def load_file_from_zip(zip_file, target_file):
     except Exception as e:
         st.error(f"Ocurrió un error: {e}")
         return pd.DataFrame()
-    finally:
-        ftps.quit()  # Asegúrate de cerrar la conexión FTPS
+
 
     
     
