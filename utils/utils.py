@@ -29,12 +29,12 @@ def connect_ftps():
         ftps.encoding = "latin-1"
 
         # Intenta la conexión
-        ftps.connect(st.secrets["ftps"]["host"], st.secrets["ftps"]["port"],timeout = 60)
+        ftps.connect(st.secrets["ftps"]["host"], st.secrets["ftps"]["port"],timeout = 30)
         ftps.login(st.secrets["ftps"]["user"], st.secrets["ftps"]["password"])
         ftps.sock.settimeout(60)
 
         ftps.prot_p()  # Habilita la protección de datos
-        ftplib.FTP_TLS.debugging = 2  # Activa el modo de depuración (2 genera detalles completos)
+        #ftplib.FTP_TLS.debugging = 2  # Activa el modo de depuración (2 genera detalles completos)
         return ftps
 
     except Exception as e:
