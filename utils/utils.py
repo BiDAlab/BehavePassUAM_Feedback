@@ -30,7 +30,7 @@ def connect_ftps():
     ftps.encoding = "latin-1"
 
     # Conectar al servidor FTPS
-    ftps.connect(host, port)
+    ftps.connect(host, port, timeout=30)
     ftps.login(username, password)
 
     # Forzar la protección de datos (TLS para el canal de datos)
