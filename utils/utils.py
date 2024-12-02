@@ -192,14 +192,17 @@ def edad_real(usuario_file):
             
     except FileNotFoundError:
         st.error("El archivo JSON no se encontró en el servidor FTPS.")
-        return None
+        return edad, lang
+        #return None
     except json.JSONDecodeError:
         st.error("El archivo JSON tiene un formato inválido.")
-        return None
+        return edad, lang
+        #return None
     except Exception as e:
         st.error(f"Ocurrió un error al cargar el archivo JSON: {e}")
-        return None
-    return edad, lang
+        return edad, lang
+        #return None
+    
     
     
 
