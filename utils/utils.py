@@ -34,7 +34,7 @@ def connect_ftps():
         ftps.sock.settimeout(60)
 
         ftps.prot_p()  # Habilita la protección de datos
-        ftplib.FTP_TLS.debugging = 0  # Activa el modo de depuración (2 genera detalles completos)
+        ftplib.FTP_TLS.debugging = 2  # Activa el modo de depuración (2 genera detalles completos)
         return ftps
 
     except Exception as e:
@@ -57,6 +57,8 @@ def load_file(ftps, file):
         ftps.retrbinary('RETR ' + file, data.write)
         data.seek(0)
         return pd.read_csv(data, sep='\t', header=0)
+
+
 
 #Función sacar datos del zip
 @st.cache_data
