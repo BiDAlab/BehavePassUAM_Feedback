@@ -34,6 +34,7 @@ def connect_ftps():
         ftps.sock.settimeout(60)
 
         ftps.prot_p()  # Habilita la protección de datos
+        ftplib.FTP_TLS.debugging = 2  # Activa el modo de depuración (2 genera detalles completos)
         return ftps
 
     except Exception as e:
