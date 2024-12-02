@@ -29,7 +29,7 @@ def connect_ftps():
         ftps.encoding = "latin-1"
 
         # Intenta la conexión
-        ftps.connect(st.secrets["ftps"]["host"], st.secrets["ftps"]["port"])
+        ftps.connect(st.secrets["ftps"]["host"], st.secrets["ftps"]["port"],timeout = 60)
         ftps.login(st.secrets["ftps"]["user"], st.secrets["ftps"]["password"])
         ftps.prot_p()  # Habilita la protección de datos
         return ftps
