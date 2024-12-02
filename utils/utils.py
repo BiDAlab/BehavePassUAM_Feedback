@@ -207,7 +207,7 @@ def edad_real(usuario_file):
             # Sacamos la edad real y la devolvemos
             edad = int(json_data["age"])
             lang = str(json_data["lang"])
-            
+            ftps.quit()
             return edad, lang
             
     except FileNotFoundError:
