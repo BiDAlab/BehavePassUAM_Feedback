@@ -46,7 +46,7 @@ def list_files():
     #Conectamos con FTPS
     ftps=connect_ftps()
     files = ftps.nlst()
-    ftps.quit()
+    
     return files
 
 @st.cache_data
@@ -77,28 +77,28 @@ def load_file_from_zip(zip_file, target_file):
                 if target_file in z.namelist():
                     # Si existe, abre el archivo y lo carga en un DataFrame
                     with z.open(target_file) as target_data:
-                        ftps.quit()
+                        
                         return pd.read_csv(target_data, sep='\t', header=None)
                 else:
                     # Si no existe, devuelve un mensaje o un DataFrame vacío
                     print(f"El archivo {target_file} no se encontró en el zip.")
-                    ftps.quit()
+                    
                     return pd.DataFrame()  # O puedes devolver None si prefieres
     except FileNotFoundError:
         # Si el archivo zip no se encuentra, devuelve un mensaje o un DataFrame vacío
         print(f"El archivo zip {zip_file} no se encontró en el servidor FTPS.")
-        ftps.quit()
+        
         return pd.DataFrame()  # O puedes devolver None si prefieres
     
     except zipfile.BadZipFile:
         # Si el archivo descargado no es un zip válido, maneja el error
         print(f"El archivo {zip_file} no es un archivo zip válido.")
-        ftps.quit()
+        
         return pd.DataFrame()
     
     except Exception as e:
         st.error(f"Ocurrió un error: {e}")
-        ftps.quit()
+        
         return pd.DataFrame()
     
     
@@ -130,25 +130,25 @@ def load_files_from_zip(zip_file, target_files):
                     else:
                         # Si no existe, devuelve un mensaje o un DataFrame vacío
                         print(f"El archivo {target_file} no se encontró en el zip.")
-                        ftps.quit()
+                        
                         return pd.DataFrame()  # O puedes devolver None si prefieres
-                ftps.quit()
+                
                 return arrayDF
     except FileNotFoundError:
         # Si el archivo zip no se encuentra, devuelve un mensaje o un DataFrame vacío
         print(f"El archivo zip {zip_file} no se encontró en el servidor FTPS.")
-        ftps.quit()
+        
         return pd.DataFrame()  # O puedes devolver None si prefieres
         
     except zipfile.BadZipFile:
         # Si el archivo descargado no es un zip válido, maneja el error
         print(f"El archivo {zip_file} no es un archivo zip válido.")
-        ftps.quit()
+        
         return pd.DataFrame()
         
     except Exception as e:
         #st.error(f"Ocurrió un error: {e}")
-        ftps.quit()
+        
         return pd.DataFrame()
        
     
@@ -176,20 +176,20 @@ def edad_real(usuario_file):
             # Sacamos la edad real y la devolvemos
             edad = int(json_data["age"])
             lang = str(json_data["lang"])
-            ftps.quit()
+            
             return edad, lang
             
     except FileNotFoundError:
         st.error("El archivo JSON no se encontró en el servidor FTPS.")
-        ftps.quit()
+        
         return 30, "en" #Para que no de error si no se carga bien el json
     except json.JSONDecodeError:
         st.error("El archivo JSON tiene un formato inválido.")
-        ftps.quit()
+        
         return 30, "en" #Para que no de error si no se carga bien el json
     except Exception as e:
         st.error(f"Ocurrió un error al cargar el archivo JSON: {e}")
-        ftps.quit()
+        
         return 30, "en" #Para que no de error si no se carga bien el json
     
 
@@ -218,20 +218,20 @@ def ultima_sesion(usuario_file):
             #edad = int(json_data["age"])
             seseion = json_data["lastSessionsPerformed"]
             last_Ses=seseion[-1]
-            ftps.quit()
+            
             return last_Ses
             
     except FileNotFoundError:
         st.error("El archivo JSON no se encontró en el servidor FTPS.")
-        ftps.quit()
+        
         return last_Ses
     except json.JSONDecodeError:
         st.error("El archivo JSON tiene un formato inválido.")
-        ftps.quit()
+        
         return last_Ses
     except Exception as e:
         st.error(f"Ocurrió un error al cargar el archivo JSON: {e}")
-        ftps.quit()
+        
         return last_Ses
     
     
@@ -254,20 +254,20 @@ def get_idioma(usuario_file):
             # Sacamos la edad real y la devolvemos
             idioma = str(json_data["lang"])
             
-            ftps.quit()
+            
             return idioma
             
     except FileNotFoundError:
         st.error("El archivo JSON no se encontró en el servidor FTPS.")
-        ftps.quit()
+        
         return None
     except json.JSONDecodeError:
         st.error("El archivo JSON tiene un formato inválido.")
-        ftps.quit()
+        
         return None
     except Exception as e:
         st.error(f"Ocurrió un error al cargar el archivo JSON: {e}")
-        ftps.quit()
+        
         return None
 
 
