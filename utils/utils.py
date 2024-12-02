@@ -35,6 +35,8 @@ def connect_ftps():
         ftps.login(st.secrets["ftps"]["user"], st.secrets["ftps"]["password"])
         ftps.sock.settimeout(60)
 
+        ftps.voidcmd('TYPE I')
+
         ftps.prot_p()  # Habilita la protección de datos
         #ftplib.FTP_TLS.debugging = 2  # Activa el modo de depuración (2 genera detalles completos)
         return ftps
