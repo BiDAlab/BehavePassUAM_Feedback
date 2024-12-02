@@ -192,16 +192,13 @@ def edad_real(usuario_file):
             
     except FileNotFoundError:
         st.error("El archivo JSON no se encontró en el servidor FTPS.")
-        
-        return 30, "en" #Para que no de error si no se carga bien el json
+        return None
     except json.JSONDecodeError:
         st.error("El archivo JSON tiene un formato inválido.")
-        
-        return 30, "en" #Para que no de error si no se carga bien el json
+        return None
     except Exception as e:
         st.error(f"Ocurrió un error al cargar el archivo JSON: {e}")
-        
-        return 30, "en" #Para que no de error si no se carga bien el json
+        return None
     
 
 # Función para cargar la última sesión del usuario
