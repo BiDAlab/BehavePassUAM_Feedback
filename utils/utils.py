@@ -18,7 +18,7 @@ from .enums import TestFileName
 
 # Firebase bucket connection
 @st.cache_resource
-def connect_ftps2():
+def connect_ftps():
     try:
         # Configura el contexto SSL/TLS
         context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)  # Asegura que se use TLS
@@ -43,27 +43,6 @@ def connect_ftps2():
         st.error(f"Error al conectar con el servidor FTPS: {e}")
         return None
 
-@st.cache_resource
-def connect_ftps():
- 
-    # Acceder a los secretos
-    host = st.secrets["ftps"]["host"]
-    username = st.secrets["ftps"]["user"]
-    password = st.secrets["ftps"]["password"]
-    port = st.secrets["ftps"]["port"]
- 
-    # Establece la conexión FTPS usando TLS
-    context = ssl.create_default_context()
-    ftps = ftplib.FTP_TLS()
-    ftps.encoding = "latin-1"
- 
-    # Conectar al servidor FTPS
-    ftps.connect(host, port)
-    ftps.login(username, password)
- 
-    # Forzar la protección de datos (TLS para el canal de datos)
-    ftps.prot_p()
-    return ftps
 
 @st.cache_data
 # Función para listar archivos en el servidor
