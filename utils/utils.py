@@ -199,6 +199,8 @@ def edad_real(usuario_file):
     except Exception as e:
         st.error(f"Ocurrió un error al cargar el archivo JSON: {e}")
         return None
+    return edad, lang
+    
     
 
 # Función para cargar la última sesión del usuario
