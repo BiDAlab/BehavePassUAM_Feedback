@@ -92,6 +92,8 @@ def load_file_from_zip(zip_file, target_file):
     if not ftps:
         st.error("No se pudo establecer la conexión FTPS.")
         return pd.DataFrame()  # Retorna un DataFrame vacío si no se pudo conectard
+    
+    st.warning(f"HOLA")
  
     try:
         # Descarga el archivo zip en memoria
@@ -109,18 +111,18 @@ def load_file_from_zip(zip_file, target_file):
                         return pd.read_csv(target_data, sep='\t', header=None)
                 else:
                     # Si no existe, devuelve un mensaje o un DataFrame vacío
-                    print(f"El archivo {target_file} no se encontró en el zip.")
+                    st.error(f"El archivo {target_file} no se encontró en el zip.")
                    
                     return pd.DataFrame()  # O puedes devolver None si prefieres
     except FileNotFoundError:
         # Si el archivo zip no se encuentra, devuelve un mensaje o un DataFrame vacío
-        print(f"El archivo zip {zip_file} no se encontró en el servidor FTPS.")
+        st.error(f"El archivo zip {zip_file} no se encontró en el servidor FTPS.")
        
         return pd.DataFrame()  # O puedes devolver None si prefieres
    
     except zipfile.BadZipFile:
         # Si el archivo descargado no es un zip válido, maneja el error
-        print(f"El archivo {zip_file} no es un archivo zip válido.")
+        st.error(f"El archivo {zip_file} no es un archivo zip válido.")
        
         return pd.DataFrame()
    
