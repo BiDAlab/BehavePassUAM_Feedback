@@ -21,7 +21,7 @@ from .enums import TestFileName
 def connect_ftps():
     try:
         # Configura el contexto SSL/TLS
-        context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)  # Asegura que se use TLS
+        context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)  # Asegura que se use TLS
         context.options |= ssl.OP_NO_TLSv1 | ssl.OP_NO_TLSv1_1  # Desactiva TLS 1.0 y 1.1
         context.check_hostname = False  # Deshabilita la verificación de nombre de host
         context.verify_mode = ssl.CERT_NONE  # Omite la validación del certificado (solo para pruebas)
