@@ -169,8 +169,8 @@ def load_files_from_zip(zip_file, target_files):
 @st.cache_data
 def edad_real(usuario_file):
     # Definimos variables
-    edad=0
-    lang = ""
+    edad=30
+    lang = "en"
 
     #Conectamos con FTPS
     ftps=connect_ftps()
