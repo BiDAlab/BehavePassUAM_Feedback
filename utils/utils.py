@@ -60,39 +60,47 @@ def load_file(ftps, file):
 
 
 
-#Función sacar datos del zip
+# Función para cargar un archivo que tenga zip en un DataFrame
 @st.cache_data
 def load_file_from_zip(zip_file, target_file):
-    ftps = connect_ftps()
-
-    if not ftps:
-        return pd.DataFrame()  # Retorna un DataFrame vacío si no se puede conectar
-
+   
+    #Conectamos con FTPS
+    ftps=connect_ftps()
+ 
     try:
-        ftps.voidcmd('TYPE I')  # Cambia al modo binario
-
         # Descarga el archivo zip en memoria
         with io.BytesIO() as zip_data:
             ftps.retrbinary('RETR ' + zip_file, zip_data.write)
             zip_data.seek(0)  # Reinicia el puntero al inicio del buffer
-
+           
             # Descomprime el archivo zip en memoria
             with zipfile.ZipFile(zip_data) as z:
                 # Verifica si el archivo objetivo existe en el zip
                 if target_file in z.namelist():
+                    # Si existe, abre el archivo y lo carga en un DataFrame
                     with z.open(target_file) as target_data:
+                       
                         return pd.read_csv(target_data, sep='\t', header=None)
                 else:
-                    st.warning(f"El archivo {target_file} no se encontró en el zip.")
-                    return pd.DataFrame()
+                    # Si no existe, devuelve un mensaje o un DataFrame vacío
+                    print(f"El archivo {target_file} no se encontró en el zip.")
+                   
+                    return pd.DataFrame()  # O puedes devolver None si prefieres
     except FileNotFoundError:
-        st.warning(f"El archivo zip {zip_file} no se encontró en el servidor FTPS.")
-        return pd.DataFrame()
+        # Si el archivo zip no se encuentra, devuelve un mensaje o un DataFrame vacío
+        print(f"El archivo zip {zip_file} no se encontró en el servidor FTPS.")
+       
+        return pd.DataFrame()  # O puedes devolver None si prefieres
+   
     except zipfile.BadZipFile:
-        st.warning(f"El archivo {zip_file} no es un archivo zip válido.")
+        # Si el archivo descargado no es un zip válido, maneja el error
+        print(f"El archivo {zip_file} no es un archivo zip válido.")
+       
         return pd.DataFrame()
+   
     except Exception as e:
         st.error(f"Ocurrió un error: {e}")
+       
         return pd.DataFrame()
 
 
