@@ -30,7 +30,7 @@ def connect_ftps():
     ftps.encoding = "latin-1"
 
     # Conectar al servidor FTPS
-    ftps.connect(host, port)
+    ftps.connect(host, port, timeout = 30)
     ftps.login(username, password)
 
     # Forzar la protección de datos (TLS para el canal de datos)
@@ -169,7 +169,7 @@ def edad_real(usuario_file):
     except Exception as e:
         st.error(f"Ocurrió un error al cargar el archivo JSON: {e}")
     return 30, "en" #Para que no de error si no se carga bien el json
-    
+
 # Función para cargar la última sesión del usuario
 @st.cache_data
 def ultima_sesion(usuario_file):
