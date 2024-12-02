@@ -17,25 +17,26 @@ from .enums import TestFileName
 # Firebase bucket connection
 @st.cache_resource
 def connect_ftps():
+    try:
+        # Configura el contexto SSL/TLS
+        context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)  # Asegura que se use TLS
+        context.options |= ssl.OP_NO_TLSv1 | ssl.OP_NO_TLSv1_1  # Desactiva TLS 1.0 y 1.1
+        context.check_hostname = False  # Deshabilita la verificación de nombre de host
+        context.verify_mode = ssl.CERT_NONE  # Omite la validación del certificado (solo para pruebas)
 
-    # Acceder a los secretos
-    host = st.secrets["ftps"]["host"]
-    username = st.secrets["ftps"]["user"]
-    password = st.secrets["ftps"]["password"]
-    port = st.secrets["ftps"]["port"]
+        # Conecta al servidor FTPS
+        ftps = ftplib.FTP_TLS(context=context)
+        ftps.encoding = "latin-1"
 
-    # Establece la conexión FTPS usando TLS
-    context = ssl.create_default_context()
-    ftps = ftplib.FTP_TLS()
-    ftps.encoding = "latin-1"
+        # Intenta la conexión
+        ftps.connect(st.secrets["ftps"]["host"], st.secrets["ftps"]["port"], timeout=15)
+        ftps.login(st.secrets["ftps"]["user"], st.secrets["ftps"]["password"])
+        ftps.prot_p()  # Habilita la protección de datos
+        return ftps
 
-    # Conectar al servidor FTPS
-    ftps.connect(host, port)
-    ftps.login(username, password)
-
-    # Forzar la protección de datos (TLS para el canal de datos)
-    ftps.prot_p()
-    return ftps
+    except Exception as e:
+        st.error(f"Error al conectar con el servidor FTPS: {e}")
+        return None
 
 @st.cache_data
 # Función para listar archivos en el servidor
