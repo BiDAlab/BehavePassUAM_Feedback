@@ -10,6 +10,8 @@ import zipfile
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import unpad
 import base64
+import time
+
 
 from .enums import TestFileName
 
@@ -81,6 +83,20 @@ def load_file(ftps, file):
         return pd.read_csv(data, sep='\t', header=0)
 
 
+def retry_retrbinary(ftps, cmd, callback, retries=3, delay=5):
+    for attempt in range(retries):
+        try:
+            ftps.retrbinary(cmd, callback)
+            return True  # Si tiene éxito, salimos del bucle
+        except Exception as e:
+            st.warning(f"Intento {attempt + 1} fallido: {e}")
+            if attempt == retries - 1:  # Si fallan todos los intentos, muestra el error final
+                st.error("No se pudo descargar el archivo después de varios intentos.")
+                return False
+            time.sleep(delay)  # Espera entre intentos
+
+
+
 
 # Función para cargar un archivo que tenga zip en un DataFrame
 @st.cache_data
@@ -96,39 +112,22 @@ def load_file_from_zip(zip_file, target_file):
     st.warning(f"HOLA")
  
     try:
-        # Descarga el archivo zip en memoria
+        # Descarga el archivo zip en memoria con reintentos
         with io.BytesIO() as zip_data:
-            ftps.retrbinary('RETR ' + zip_file, zip_data.write)
+            if not retry_retrbinary(ftps, 'RETR ' + zip_file, zip_data.write):
+                return pd.DataFrame()  # Si falla en todos los intentos, retorna un DataFrame vacío
             zip_data.seek(0)  # Reinicia el puntero al inicio del buffer
-           
+
             # Descomprime el archivo zip en memoria
             with zipfile.ZipFile(zip_data) as z:
-                # Verifica si el archivo objetivo existe en el zip
                 if target_file in z.namelist():
-                    # Si existe, abre el archivo y lo carga en un DataFrame
                     with z.open(target_file) as target_data:
-                       
                         return pd.read_csv(target_data, sep='\t', header=None)
                 else:
-                    # Si no existe, devuelve un mensaje o un DataFrame vacío
-                    st.error(f"El archivo {target_file} no se encontró en el zip.")
-                   
-                    return pd.DataFrame()  # O puedes devolver None si prefieres
-    except FileNotFoundError:
-        # Si el archivo zip no se encuentra, devuelve un mensaje o un DataFrame vacío
-        st.error(f"El archivo zip {zip_file} no se encontró en el servidor FTPS.")
-       
-        return pd.DataFrame()  # O puedes devolver None si prefieres
-   
-    except zipfile.BadZipFile:
-        # Si el archivo descargado no es un zip válido, maneja el error
-        st.error(f"El archivo {zip_file} no es un archivo zip válido.")
-       
-        return pd.DataFrame()
-   
+                    st.warning(f"El archivo {target_file} no se encontró en el zip.")
+                    return pd.DataFrame()
     except Exception as e:
-        st.error(f"Ocurrió un error jeje: {e}")
-       
+        st.error(f"Ocurrió un error: {e}")
         return pd.DataFrame()
 
 
