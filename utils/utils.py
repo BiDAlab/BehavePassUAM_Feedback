@@ -161,6 +161,9 @@ def load_file_from_zip(zip_file, target_file):
         st.error(f"Ocurrió un error jeje: {e}")
        
         return pd.DataFrame()
+    
+    finally:
+        ftps.quit()
 
     
     
@@ -212,6 +215,8 @@ def load_files_from_zip(zip_file, target_files):
         #st.error(f"Ocurrió un error: {e}")
         
         return pd.DataFrame()
+    finally:
+        ftps.quit()
        
     
 
@@ -255,7 +260,8 @@ def edad_real(usuario_file):
         st.error(f"Ocurrió un error al cargar el archivo JSON: {e}")
         return 30, "en"
         #return None
-    
+    finally:
+        ftps.quit()
     
     
 
@@ -300,6 +306,9 @@ def ultima_sesion(usuario_file):
         
         return last_Ses
     
+    finally:
+        ftps.quit()
+    
     
 # Función para cargar idioma del usuario
 @st.cache_data
@@ -335,6 +344,7 @@ def get_idioma(usuario_file):
         st.error(f"Ocurrió un error al cargar el archivo JSON: {e}")
         
         return None
+    
 
 
 # Función para desencriptar el usuario 

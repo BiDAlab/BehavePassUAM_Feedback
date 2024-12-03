@@ -279,3 +279,4 @@ def render_galeria_tab():
             else:
                 st.warning(f'Come back after completing session {num_Sesion}')
 
+
