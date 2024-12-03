@@ -124,7 +124,7 @@ def load_file_from_zip(zip_file, target_file):
         st.error("No se pudo establecer la conexión FTPS.")
         return pd.DataFrame()  # Retorna un DataFrame vacío si no se pudo conectard
    
-    st.warning(f"HOLA")
+     #st.warning(f"HOLA")
  
     try:
         # Descarga el archivo zip en memoria
