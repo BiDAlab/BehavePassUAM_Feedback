@@ -28,7 +28,7 @@ def connect_ftps():
         #context.verify_mode = ssl.CERT_NONE  # Omite la validación del certificado (solo para pruebas)
 
         # Conecta al servidor FTPS
-        ftps = ftplib.FTP_TLS(context=context)
+        ftps = ftplib.FTP_TLS()
         ftps.encoding = "latin-1"
 
         # Intenta la conexión
