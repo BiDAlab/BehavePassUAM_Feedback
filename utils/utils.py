@@ -162,8 +162,11 @@ def load_file_from_zip(zip_file, target_file):
        
         return pd.DataFrame()
     
-    finally:
-        ftps.close()
+    if ftps and ftps.sock:
+        try:
+            ftps.close()
+        except Exception as e:
+            st.warning(f"Advertencia: No se pudo cerrar la conexión FTPS: {e}")
 
     
     
@@ -215,8 +218,11 @@ def load_files_from_zip(zip_file, target_files):
         #st.error(f"Ocurrió un error: {e}")
         
         return pd.DataFrame()
-    finally:
-        ftps.close()
+    if ftps and ftps.sock:
+        try:
+            ftps.close()
+        except Exception as e:
+            st.warning(f"Advertencia: No se pudo cerrar la conexión FTPS: {e}")
        
     
 
@@ -260,8 +266,11 @@ def edad_real(usuario_file):
         st.error(f"Ocurrió un error al cargar el archivo JSON: {e}")
         return 30, "en"
         #return None
-    finally:
-        ftps.close()
+    if ftps and ftps.sock:
+        try:
+            ftps.close()
+        except Exception as e:
+            st.warning(f"Advertencia: No se pudo cerrar la conexión FTPS: {e}")
     
     
 
@@ -306,8 +315,11 @@ def ultima_sesion(usuario_file):
         
         return last_Ses
     
-    finally:
-        ftps.close()
+    if ftps and ftps.sock:
+        try:
+            ftps.close()
+        except Exception as e:
+            st.warning(f"Advertencia: No se pudo cerrar la conexión FTPS: {e}")
     
     
 # Función para cargar idioma del usuario
