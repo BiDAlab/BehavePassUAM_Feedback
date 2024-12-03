@@ -91,7 +91,7 @@ def load_file_from_zip2(zip_file, target_file):
         st.error("No se pudo establecer la conexión FTPS.")
         return pd.DataFrame()  # Retorna un DataFrame vacío si no se pudo conectard
     
-    st.warning(f"HOLA")
+    #st.warning(f"HOLA")
  
     try:
         # Descarga el archivo zip en memoria con reintentos
@@ -229,7 +229,7 @@ def edad_real(usuario_file):
         # Crear un buffer en memoria para almacenar el contenido del archivo
         with io.BytesIO() as data:
             # Descargar el archivo JSON al buffer 
-            st.error(f'usuario file {usuario_file}')
+            #st.error(f'usuario file {usuario_file}')
             ftps.retrbinary('RETR ' + usuario_file, data.write)
             
             data.seek(0)  # Volver al inicio del buffer para la lectura
