@@ -163,7 +163,7 @@ def load_file_from_zip(zip_file, target_file):
         return pd.DataFrame()
     
     finally:
-        ftps.quit()
+        ftps.close()
 
     
     
@@ -216,7 +216,7 @@ def load_files_from_zip(zip_file, target_files):
         
         return pd.DataFrame()
     finally:
-        ftps.quit()
+        ftps.close()
        
     
 
@@ -261,7 +261,7 @@ def edad_real(usuario_file):
         return 30, "en"
         #return None
     finally:
-        ftps.quit()
+        ftps.close()
     
     
 
@@ -307,7 +307,7 @@ def ultima_sesion(usuario_file):
         return last_Ses
     
     finally:
-        ftps.quit()
+        ftps.close()
     
     
 # Función para cargar idioma del usuario
