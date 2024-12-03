@@ -228,9 +228,10 @@ def edad_real(usuario_file):
         # Crear un buffer en memoria para almacenar el contenido del archivo
         with io.BytesIO() as data:
             # Descargar el archivo JSON al buffer
+            st.error("data load")
             ftps.retrbinary('RETR ' + usuario_file, data.write)
             data.seek(0)  # Volver al inicio del buffer para la lectura
-            st.error("data load")
+            
             # Leer el JSON desde el buffer
             json_data = json.load(data)
             
