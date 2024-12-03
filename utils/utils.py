@@ -233,6 +233,7 @@ def edad_real(usuario_file):
 
             # Leer el JSON desde el buffer
             json_data = json.load(data)
+            st.error("data load")
 
             # Sacamos la edad real y la devolvemos
             edad = int(json_data["age"])
@@ -248,7 +249,7 @@ def edad_real(usuario_file):
         return 30, "en"
         #return None
     except Exception as e:
-        st.error(f"Ocurrió un error al cargar el archivo JSONaa: {e}")
+        st.error(f"Ocurrió un error al cargar el archivo JSON: {e}")
         return 30, "en"
         #return None
     
