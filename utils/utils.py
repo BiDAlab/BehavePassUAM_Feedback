@@ -164,8 +164,9 @@ def load_file_from_zip(zip_file, target_file):
     
     if ftps and ftps.sock:
         try:
-            ftps.close()
+            ftps.quit()
         except Exception as e:
+            ftps.close()
             st.warning(f"Advertencia: No se pudo cerrar la conexión FTPS: {e}")
 
     
@@ -220,8 +221,9 @@ def load_files_from_zip(zip_file, target_files):
         return pd.DataFrame()
     if ftps and ftps.sock:
         try:
-            ftps.close()
+            ftps.quit()
         except Exception as e:
+            ftps.close()
             st.warning(f"Advertencia: No se pudo cerrar la conexión FTPS: {e}")
        
     
@@ -268,8 +270,9 @@ def edad_real(usuario_file):
         #return None
     if ftps and ftps.sock:
         try:
-            ftps.close()
+            ftps.quit()
         except Exception as e:
+            ftps.close()
             st.warning(f"Advertencia: No se pudo cerrar la conexión FTPS: {e}")
     
     
@@ -317,8 +320,9 @@ def ultima_sesion(usuario_file):
     
     if ftps and ftps.sock:
         try:
-            ftps.close()
+            ftps.quit()
         except Exception as e:
+            ftps.close()
             st.warning(f"Advertencia: No se pudo cerrar la conexión FTPS: {e}")
     
     
