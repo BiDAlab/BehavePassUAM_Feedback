@@ -82,6 +82,7 @@ pydeck==0.9.1
 Pygments==2.18.0
 PyJWT==2.9.0
 pymdown-extensions==10.11.2
+pyOpenSSL==24.0.0
 pyparsing==3.2.0
 python-dateutil==2.9.0.post0
 pytz==2024.2
