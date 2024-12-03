@@ -248,7 +248,7 @@ def edad_real(usuario_file):
         return 30, "en"
         #return None
     except Exception as e:
-        st.error(f"Ocurrió un error al cargar el archivo JSON: {e}")
+        st.error(f"Ocurrió un error al cargar el archivo JSONaa: {e}")
         return 30, "en"
         #return None
     
@@ -292,7 +292,7 @@ def ultima_sesion(usuario_file):
         
         return last_Ses
     except Exception as e:
-        st.error(f"Ocurrió un error al cargar el archivo JSON omg: {e}")
+        st.error(f"Ocurrió un error al cargar el archivo JSON: {e}")
         
         return last_Ses
     
