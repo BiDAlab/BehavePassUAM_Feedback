@@ -21,7 +21,8 @@ from .enums import TestFileName
 def connect_ftps():
     try:
         # Configura el contexto SSL/TLS
-        context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)  # Asegura que se use TLS
+        #context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)  # Asegura que se use TLS
+        context = ssl.create_default_context()
         #context.options |= ssl.OP_NO_TLSv1 | ssl.OP_NO_TLSv1_1  # Desactiva TLS 1.0 y 1.1
         #context.check_hostname = False  # Deshabilita la verificación de nombre de host
         #context.verify_mode = ssl.CERT_NONE  # Omite la validación del certificado (solo para pruebas)
@@ -33,12 +34,12 @@ def connect_ftps():
         # Intenta la conexión
         ftps.connect(st.secrets["ftps"]["host"], st.secrets["ftps"]["port"],timeout = 30)
         ftps.login(st.secrets["ftps"]["user"], st.secrets["ftps"]["password"])
-        ftps.sock.settimeout(60)
+        #ftps.sock.settimeout(60)
 
-        ftps.voidcmd('TYPE I')
+        #ftps.voidcmd('TYPE I')
 
         ftps.prot_p()  # Habilita la protección de datos
-        ftplib.FTP_TLS.debugging = 2  # Activa el modo de depuración (2 genera detalles completos)
+        #ftplib.FTP_TLS.debugging = 2  # Activa el modo de depuración (2 genera detalles completos)
         return ftps
 
     except Exception as e:
