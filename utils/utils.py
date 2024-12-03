@@ -218,8 +218,8 @@ def load_files_from_zip(zip_file, target_files):
 @st.cache_data
 def edad_real(usuario_file):
     # Definimos variables
-    edad=30
-    lang = "en"
+    edad=0
+    lang = ""
 
     #Conectamos con FTPS
     ftps=connect_ftps()
@@ -241,15 +241,15 @@ def edad_real(usuario_file):
             
     except FileNotFoundError:
         st.error("El archivo JSON no se encontró en el servidor FTPS.")
-        return edad, lang
+        return 30, "en"
         #return None
     except json.JSONDecodeError:
         st.error("El archivo JSON tiene un formato inválido.")
-        return edad, lang
+        return 30, "en"
         #return None
     except Exception as e:
         st.error(f"Ocurrió un error al cargar el archivo JSON: {e}")
-        return edad, lang
+        return 30, "en"
         #return None
     
     
@@ -292,7 +292,7 @@ def ultima_sesion(usuario_file):
         
         return last_Ses
     except Exception as e:
-        st.error(f"Ocurrió un error al cargar el archivo JSON: {e}")
+        st.error(f"Ocurrió un error al cargar el archivo JSON omg: {e}")
         
         return last_Ses
     
