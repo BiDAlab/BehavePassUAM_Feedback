@@ -58,7 +58,8 @@ if participant_id_enc:
     # Desencriptamos el usuario
         participant_id=decrypt(participant_id_enc)
 
-        if participant_exists(participant_id):
+        if True:
+        #if participant_exists(participant_id):
             # Navigation pages definition
             views = {
                 'Resources': [
