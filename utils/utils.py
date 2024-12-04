@@ -265,10 +265,10 @@ def edad_real(usuario_file):
         return 30, "en"
         #return None
     except Exception as e:
-        st.error(f"Ocurrió un error al cargar el archivo JSON: {e}")
+        #st.error(f"Ocurrió un error al cargar el archivo JSON: {e}")
         return 30, "en"
         #return None
-        
+
     if ftps and ftps.sock:
         try:
             ftps.quit()
