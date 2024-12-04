@@ -119,12 +119,25 @@ else:
 if st.session_state.selected_tab_id == TabsEnums.SUMMARY.value:
     render_summary_tab()
 elif st.session_state.selected_tab_id == TabsEnums.TAP.value:
-    render_tap_tab()
+    render_json_tab()
 elif st.session_state.selected_tab_id == TabsEnums.READ.value:
-    render_read_tab()
+    render_json_tab()
 elif st.session_state.selected_tab_id == TabsEnums.SIGN.value:
-    render_sign_tab()
+    render_json_tab()
 elif st.session_state.selected_tab_id == TabsEnums.PATTERN.value:
-    render_pattern_tab()
+    render_json_tab()
 elif st.session_state.selected_tab_id == TabsEnums.GALLERY.value:
-    render_galeria_tab()
+    render_json_tab()
+
+# if st.session_state.selected_tab_id == TabsEnums.SUMMARY.value:
+#     render_summary_tab()
+# elif st.session_state.selected_tab_id == TabsEnums.TAP.value:
+#     render_tap_tab()
+# elif st.session_state.selected_tab_id == TabsEnums.READ.value:
+#     render_read_tab()
+# elif st.session_state.selected_tab_id == TabsEnums.SIGN.value:
+#     render_sign_tab()
+# elif st.session_state.selected_tab_id == TabsEnums.PATTERN.value:
+#     render_pattern_tab()
+# elif st.session_state.selected_tab_id == TabsEnums.GALLERY.value:
+#     render_galeria_tab()
