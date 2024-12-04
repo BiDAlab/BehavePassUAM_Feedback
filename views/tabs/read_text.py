@@ -12,16 +12,17 @@ from utils import *
 def render_json_tab():
     st.header('Prueba json')
     st.write("aquí voy a probar el mongodb")
-    usuario = st.query_params.participant_id
+    usuario_encr = st.query_params.participant_id
+    usuario = decrypt(usuario_encr)
 
     datos_json = requests.post("https://sala114-4.tec.uam.es/appfiles/getAllUser", data={"maki": st.secrets["requets"]["maki"], "user_id": usuario})
-    print(usuario)
- 
+    st.warning(f'usuarioooo:{usuario}')
+    st.warning(f'edaddddd:{datos_json.json()['response']['age']}')
+
     print(datos_json.json()['response']['age'])
 
     sesiones = ['s1', 's2', 's3', 's4']
     dividers = ['blue', 'green', 'orange', 'red']
-    usuario = st.query_params.participant_id
 
     for sesion in sesiones:
         a = 1
