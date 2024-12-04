@@ -12,7 +12,7 @@ from utils import *
 def render_json_tab():
     st.header('Prueba json')
     st.write("aquí voy a probar el mongodb")
-    usuario_encr = st.query_params.participant_id
+    usuario_encr = st.query_params.feedback
     usuario = decrypt(usuario_encr)
 
     datos_json = requests.post("https://sala114-4.tec.uam.es/appfiles/getAllUser", data={"maki": st.secrets["requets"]["maki"], "user_id": usuario})
