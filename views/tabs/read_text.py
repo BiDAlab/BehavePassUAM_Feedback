@@ -18,6 +18,9 @@ def render_json_tab():
     datos_json = requests.post("https://sala114-4.tec.uam.es/appfiles/getAllUser", data={"maki": st.secrets["requets"]["maki"], "user_id": usuario})
     st.warning(f'usuarioooo:{usuario}')
     st.warning(f'edaddddd:{datos_json.json()['response']['age']}')
+    st.warning(f'init:{datos_json.json()['response']['init']}')
+    st.warning(f'init:{datos_json.json()['response']['initUtc']}')
+
 
     print(datos_json.json()['response']['age'])
 
