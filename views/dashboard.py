@@ -7,6 +7,7 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 from utils import *
 from utils.enums import TabsEnums
 from views.tabs import *
+import requests
 
 
 usuario_en = st.query_params.feedback

@@ -11,7 +11,7 @@ from Crypto.Cipher import AES
 from Crypto.Util.Padding import unpad
 import base64
 import time
-
+import requests
 
 from .enums import TestFileName
 
