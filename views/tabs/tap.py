@@ -150,169 +150,166 @@ def graficar_distribucion_probabilidad(velocidad_reaccion,lang):
 
 
 
-def render_tap_tab_json():
-    usuario_en = st.query_params.feedback
-    usuario = decrypt(usuario_en)
-    usuario_file=f'{usuario}/config.json'
-    edadReal, lang =edad_real(usuario_file)
-    #lang = "en" 
+# def render_tap_tab_json():
+#     usuario_en = st.query_params.feedback
+#     usuario = decrypt(usuario_en)
+#     usuario_file=f'{usuario}/config.json'
+#     edadReal, lang =edad_real(usuario_file)
+#     #lang = "en" 
     
-    if lang == "es": #Versión español
-        st.title('Rendimiento en el juego de los topos 🐭')
-        st.header("¡Veamos tu velocidad de reacción 👆 y algunos datos interesantes sobre tu rendimiento!")
+#     if lang == "es": #Versión español
+#         st.title('Rendimiento en el juego de los topos 🐭')
+#         st.header("¡Veamos tu velocidad de reacción 👆 y algunos datos interesantes sobre tu rendimiento!")
 
-        sesiones = ['s1', 's2', 's3', 's4']
-        dividers = ['blue', 'green', 'orange', 'red']
+#         sesiones = ['s1', 's2', 's3', 's4']
+#         dividers = ['blue', 'green', 'orange', 'red']
 
-        usuario_en = st.query_params.feedback
-        usuario = decrypt(usuario_en)
+#         usuario_en = st.query_params.feedback
+#         usuario = decrypt(usuario_en)
 
-        for sesion in sesiones:
+#         for sesion in sesiones:
 
-            num_Sesion=int(sesion[-1])
-            st.subheader(f'Datos de la sesión {num_Sesion}', divider=dividers[num_Sesion-1])
+#             num_Sesion=int(sesion[-1])
+#             st.subheader(f'Datos de la sesión {num_Sesion}', divider=dividers[num_Sesion-1])
 
-            #Sacamos los datos de la BBDD
-            zip_file=f'{usuario}/{sesion}.zip'
-            target_file=f'{sesion}/g/tap/{sesion}_g_touch.csv'
-            try:
-                df=load_file_from_zip(zip_file, target_file)
-            except:
-                df = pd.DataFrame()  # DataFrame vacío en caso de error
+#             #Sacamos los datos de la BBDD
+#             zip_file=f'{usuario}/{sesion}.zip'
+#             target_file=f'{sesion}/g/tap/{sesion}_g_touch.csv'
+#             try:
+#                 df=load_file_from_zip(zip_file, target_file)
+#             except:
+#                 df = pd.DataFrame()  # DataFrame vacío en caso de error
 
-            # Comprobamos que hay datos para representar
-            if not df.empty:
-                velocidad_usuario = calcular_tiempos_reaccion(df)
+#             # Comprobamos que hay datos para representar
+#             if not df.empty:
+#                 velocidad_usuario = calcular_tiempos_reaccion(df)
                 
-                graficar_distribucion_probabilidad(df,lang)
-                if velocidad_usuario.mean() < 300.0:
-                    TextoVelocidad=f'<b>¡Impresionante!</b> Tu velocidad de reacción en esta sesión ({velocidad_usuario.round()}ms) está muy por encima de la media de los usuarios de BehavePassUAM.'
-                    st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
-                    #st.write(f'¡Impresionante! Tu velocidad de reacción ({velocidad_usuario.mean().round()}ms) está por encima de la media de los usuarios de BehavePassUAM.')
-                elif velocidad_usuario.mean() > 300.0 and 600.0 > velocidad_usuario.mean():
-                    TextoVelocidad=f'Tu velocidad de reacción en esta sesión ({velocidad_usuario.round()}ms) está en el rango promedio (300ms - 600ms) de los usuarios de BehavePassUAM.'
-                    st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
-                elif 600.0 < velocidad_usuario.mean():
-                    TextoVelocidad=f'Tu velocidad de reacción en esta sesión ({velocidad_usuario.round()}ms) está por debajo de la media de los usuarios de BehavePassUAM. '
-                    st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
-                    #st.write(f'Vaya... Tu velocidad de reacción ({velocidad_usuario.mean().round()}ms) está por debajo de la media de los usuarios de BehavePassUAM. ')
+#                 graficar_distribucion_probabilidad(df,lang)
+#                 if velocidad_usuario.mean() < 300.0:
+#                     TextoVelocidad=f'<b>¡Impresionante!</b> Tu velocidad de reacción en esta sesión ({velocidad_usuario.round()}ms) está muy por encima de la media de los usuarios de BehavePassUAM.'
+#                     st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
+#                     #st.write(f'¡Impresionante! Tu velocidad de reacción ({velocidad_usuario.mean().round()}ms) está por encima de la media de los usuarios de BehavePassUAM.')
+#                 elif velocidad_usuario.mean() > 300.0 and 600.0 > velocidad_usuario.mean():
+#                     TextoVelocidad=f'Tu velocidad de reacción en esta sesión ({velocidad_usuario.round()}ms) está en el rango promedio (300ms - 600ms) de los usuarios de BehavePassUAM.'
+#                     st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
+#                 elif 600.0 < velocidad_usuario.mean():
+#                     TextoVelocidad=f'Tu velocidad de reacción en esta sesión ({velocidad_usuario.round()}ms) está por debajo de la media de los usuarios de BehavePassUAM. '
+#                     st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
+#                     #st.write(f'Vaya... Tu velocidad de reacción ({velocidad_usuario.mean().round()}ms) está por debajo de la media de los usuarios de BehavePassUAM. ')
 
                 
-                #st.dataframe(df)
-            else:
-                st.warning(f'Vuelve cuando hayas completado la sesión {num_Sesion}')
+#                 #st.dataframe(df)
+#             else:
+#                 st.warning(f'Vuelve cuando hayas completado la sesión {num_Sesion}')
                 
                 
                 
-    elif lang == "en": #Versión inglés
-        st.title('Tap the mole 🐭')
-        st.header("Let's see your reaction speed 👆 and some interesting facts about your performance!")
+#     elif lang == "en": #Versión inglés
+#         st.title('Tap the mole 🐭')
+#         st.header("Let's see your reaction speed 👆 and some interesting facts about your performance!")
 
-        sesiones = ['s1', 's2', 's3', 's4']
-        dividers = ['blue', 'green', 'orange', 'red']
+#         sesiones = ['s1', 's2', 's3', 's4']
+#         dividers = ['blue', 'green', 'orange', 'red']
 
-        usuario_en = st.query_params.feedback
-        usuario = decrypt(usuario_en)
+#         usuario_en = st.query_params.feedback
+#         usuario = decrypt(usuario_en)
 
-        for sesion in sesiones:
+#         for sesion in sesiones:
 
-            num_Sesion=int(sesion[-1])
-            st.subheader(f'Session number {num_Sesion}', divider=dividers[num_Sesion-1])
+#             num_Sesion=int(sesion[-1])
+#             st.subheader(f'Session number {num_Sesion}', divider=dividers[num_Sesion-1])
 
-            #Sacamos los datos de la BBDD
-            zip_file=f'{usuario}/{sesion}.zip'
-            target_file=f'{sesion}/g/tap/{sesion}_g_touch.csv'
-            try:
-                df=load_file_from_zip(zip_file, target_file)
-            except:
-                df = pd.DataFrame()  # DataFrame vacío en caso de error
+#             #Sacamos los datos de la BBDD
+#             zip_file=f'{usuario}/{sesion}.zip'
+#             target_file=f'{sesion}/g/tap/{sesion}_g_touch.csv'
+#             try:
+#                 df=load_file_from_zip(zip_file, target_file)
+#             except:
+#                 df = pd.DataFrame()  # DataFrame vacío en caso de error
 
-            # Comprobamos que hay datos para representar
-            if not df.empty:
-                velocidad_usuario = calcular_tiempos_reaccion(df)
+#             # Comprobamos que hay datos para representar
+#             if not df.empty:
+#                 velocidad_usuario = calcular_tiempos_reaccion(df)
 
-                graficar_distribucion_probabilidad(df, lang)
+#                 graficar_distribucion_probabilidad(df, lang)
                 
-                if velocidad_usuario.mean() < 300.0:
-                    TextoVelocidad = f'<b>Impressive!</b> Your reaction speed in this session ({velocidad_usuario.round()}ms) is well above the average of BehavePassUAM users.'
-                    st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
-                elif 300.0 <= velocidad_usuario.mean() <= 600.0:
-                    TextoVelocidad = f'Your reaction speed in this session ({velocidad_usuario.round()}ms) is within the average range (300ms - 600ms) of BehavePassUAM users.'
-                    st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
-                elif velocidad_usuario.mean() > 600.0:
-                    TextoVelocidad = f'Your reaction speed in this session ({velocidad_usuario.round()}ms) is below the average of BehavePassUAM users.'
-                    st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
-            else:
-                st.warning(f'Please return after completing session {num_Sesion}.')
+#                 if velocidad_usuario.mean() < 300.0:
+#                     TextoVelocidad = f'<b>Impressive!</b> Your reaction speed in this session ({velocidad_usuario.round()}ms) is well above the average of BehavePassUAM users.'
+#                     st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
+#                 elif 300.0 <= velocidad_usuario.mean() <= 600.0:
+#                     TextoVelocidad = f'Your reaction speed in this session ({velocidad_usuario.round()}ms) is within the average range (300ms - 600ms) of BehavePassUAM users.'
+#                     st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
+#                 elif velocidad_usuario.mean() > 600.0:
+#                     TextoVelocidad = f'Your reaction speed in this session ({velocidad_usuario.round()}ms) is below the average of BehavePassUAM users.'
+#                     st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
+#             else:
+#                 st.warning(f'Please return after completing session {num_Sesion}.')
 
                         
                     
-# def render_tap_tab_json(json_usuario, lang):
-#         if lang == "es": #Versión español
-#             st.title('Rendimiento en el juego de los topos 🐭')
-#             st.header("¡Veamos tu velocidad de reacción 👆 y algunos datos interesantes sobre tu rendimiento!")
+def render_tap_tab_json(json_usuario, lang):
+        if lang == "es": #Versión español
+            st.title('Rendimiento en el juego de los topos 🐭')
+            st.header("¡Veamos tu velocidad de reacción 👆 y algunos datos interesantes sobre tu rendimiento!")
 
-#             sesiones = ['s1', 's2', 's3', 's4']
-#             dividers = ['blue', 'green', 'orange', 'red']
+            sesiones = ['s1', 's2', 's3', 's4']
+            dividers = ['blue', 'green', 'orange', 'red']
 
-#             datos_tap = json_usuario.get("tap", "Unknown")
+            datos_tap = json_usuario.get("tap", "Unknown")
 
 
-#             for sesion in sesiones:
+            for sesion in sesiones:
 
-#                 num_Sesion=int(sesion[-1])
-#                 st.subheader(f'Datos de la sesión {num_Sesion}', divider=dividers[num_Sesion-1])
-#                 velocidad_usuario = datos_tap['reaction_time'][sesion]
+                num_Sesion=int(sesion[-1])
+                st.subheader(f'Datos de la sesión {num_Sesion}', divider=dividers[num_Sesion-1])
+                velocidad_usuario = datos_tap['reaction_time'][sesion]
 
-#                 # Comprobamos que hay datos para representar
-#                 if velocidad_usuario != -1:                
-#                     graficar_distribucion_probabilidad(velocidad_usuario,lang)
-#                     if velocidad_usuario < 300.0:
-#                         TextoVelocidad=f'<b>¡Impresionante!</b> Tu velocidad de reacción en esta sesión ({velocidad_usuario.round()}ms) está muy por encima de la media de los usuarios de BehavePassUAM.'
-#                         st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
-#                         #st.write(f'¡Impresionante! Tu velocidad de reacción ({velocidad_usuario.mean().round()}ms) está por encima de la media de los usuarios de BehavePassUAM.')
-#                     elif velocidad_usuario > 300.0 and 600.0 > velocidad_usuario:
-#                         TextoVelocidad=f'Tu velocidad de reacción en esta sesión ({velocidad_usuario.round()}ms) está en el rango promedio (300ms - 600ms) de los usuarios de BehavePassUAM.'
-#                         st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
-#                     elif 600.0 < velocidad_usuario:
-#                         TextoVelocidad=f'Tu velocidad de reacción en esta sesión ({velocidad_usuario..round()}ms) está por debajo de la media de los usuarios de BehavePassUAM. '
-#                         st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
-#                         #st.write(f'Vaya... Tu velocidad de reacción ({velocidad_usuario.mean().round()}ms) está por debajo de la media de los usuarios de BehavePassUAM. ')
+                # Comprobamos que hay datos para representar
+                if velocidad_usuario != -1:                
+                    graficar_distribucion_probabilidad(velocidad_usuario,lang)
+                    if velocidad_usuario < 300.0:
+                        TextoVelocidad=f'<b>¡Impresionante!</b> Tu velocidad de reacción en esta sesión ({velocidad_usuario.round()}ms) está muy por encima de la media de los usuarios de BehavePassUAM.'
+                        st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
+                        #st.write(f'¡Impresionante! Tu velocidad de reacción ({velocidad_usuario.mean().round()}ms) está por encima de la media de los usuarios de BehavePassUAM.')
+                    elif velocidad_usuario > 300.0 and 600.0 > velocidad_usuario:
+                        TextoVelocidad=f'Tu velocidad de reacción en esta sesión ({velocidad_usuario.round()}ms) está en el rango promedio (300ms - 600ms) de los usuarios de BehavePassUAM.'
+                        st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
+                    elif 600.0 < velocidad_usuario:
+                        TextoVelocidad=f'Tu velocidad de reacción en esta sesión ({velocidad_usuario..round()}ms) está por debajo de la media de los usuarios de BehavePassUAM. '
+                        st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
+                        #st.write(f'Vaya... Tu velocidad de reacción ({velocidad_usuario.mean().round()}ms) está por debajo de la media de los usuarios de BehavePassUAM. ')
 
                     
-#                     #st.dataframe(df)
-#                 else:
-#                     st.warning(f'Vuelve cuando hayas completado la sesión {num_Sesion}')
+                    #st.dataframe(df)
+                else:
+                    st.warning(f'Vuelve cuando hayas completado la sesión {num_Sesion}')
                     
                     
                     
-#         elif lang == "en": #Versión inglés
-#             st.title('Tap the mole 🐭')
-#             st.header("Let's see your reaction speed 👆 and some interesting facts about your performance!")
-
-#             sesiones = ['s1', 's2', 's3', 's4']
-#             dividers = ['blue', 'green', 'orange', 'red']
-
-#             datos_tap = json_usuario.get("tap", "Unknown")
+        elif lang == "en": #Versión inglés
+            st.title('Tap the mole 🐭')
+            st.header("Let's see your reaction speed 👆 and some interesting facts about your performance!")
+            sesiones = ['s1', 's2', 's3', 's4']
+            dividers = ['blue', 'green', 'orange', 'red']
+            datos_tap = json_usuario.get("tap", "Unknown")
 
 
-#             for sesion in sesiones:
+            for sesion in sesiones:
 
-#                 num_Sesion=int(sesion[-1])
-#                 st.subheader(f'Datos de la sesión {num_Sesion}', divider=dividers[num_Sesion-1])
-#                 velocidad_usuario = datos_tap['reaction_time'][sesion]
-
-#                 # Comprobamos que hay datos para representar
-#                 if velocidad_usuario != -1:                
-#                     graficar_distribucion_probabilidad(velocidad_usuario,lang)                
-#                     if velocidad_usuario < 300.0:
-#                         TextoVelocidad = f'<b>Impressive!</b> Your reaction speed in this session ({velocidad_usuario.mean().round()}ms) is well above the average of BehavePassUAM users.'
-#                         st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
-#                     elif 300.0 <= velocidad_usuario <= 600.0:
-#                         TextoVelocidad = f'Your reaction speed in this session ({velocidad_usuario.mean().round()}ms) is within the average range (300ms - 600ms) of BehavePassUAM users.'
-#                         st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
-#                     elif velocidad_usuario > 600.0:
-#                         TextoVelocidad = f'Your reaction speed in this session ({velocidad_usuario.mean().round()}ms) is below the average of BehavePassUAM users.'
-#                         st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
-#                 else:
-#                     st.warning(f'Please return after completing session {num_Sesion}.')
+                num_Sesion=int(sesion[-1])
+                st.subheader(f'Datos de la sesión {num_Sesion}', divider=dividers[num_Sesion-1])
+                velocidad_usuario = datos_tap['reaction_time'][sesion]
+               # Comprobamos que hay datos para representar
+                if velocidad_usuario != -1:                
+                    graficar_distribucion_probabilidad(velocidad_usuario,lang)                
+                    if velocidad_usuario < 300.0:
+                        TextoVelocidad = f'<b>Impressive!</b> Your reaction speed in this session ({velocidad_usuario.mean().round()}ms) is well above the average of BehavePassUAM users.'
+                        st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
+                    elif 300.0 <= velocidad_usuario <= 600.0:
+                        TextoVelocidad = f'Your reaction speed in this session ({velocidad_usuario.mean().round()}ms) is within the average range (300ms - 600ms) of BehavePassUAM users.'
+                        st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
+                    elif velocidad_usuario > 600.0:
+                        TextoVelocidad = f'Your reaction speed in this session ({velocidad_usuario.mean().round()}ms) is below the average of BehavePassUAM users.'
+                        st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
+                else:
+                    st.warning(f'Please return after completing session {num_Sesion}.')
