@@ -15,6 +15,18 @@ import time
 
 from .enums import TestFileName
 
+@st.cache_data
+def connect_mongodb(user_id):
+    url = "https://sala114-4.tec.uam.es/appfiles/getFeedback"
+    payload = {"maki": st.secrets["requets"]["maki"], "user_id": user_id}
+
+    response = requests.post(url, data=payload)
+    response_data = response.json()
+    user_info = response_data['response']
+    return user_info
+
+
+
 
 # Firebase bucket connection
 @st.cache_resource

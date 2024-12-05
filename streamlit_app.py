@@ -13,7 +13,7 @@ from utils import connect_ftps, list_files, decrypt
 st.set_page_config(page_title='BehavePassUAM', layout='wide', page_icon='📱')
 
 # Conectar al servidor FTPS
-ftps = connect_ftps()
+#ftps = connect_ftps()
 
 # Función para verificar si el participante existe
 def participant_exists(participant_id: str) -> bool:

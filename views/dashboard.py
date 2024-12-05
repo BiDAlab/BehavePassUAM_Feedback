@@ -12,8 +12,10 @@ from views.tabs import *
 usuario_en = st.query_params.feedback
 usuario = decrypt(usuario_en)
 usuario_file=f'{usuario}/config.json'
-edadReal, lang =edad_real(usuario_file)
+#edadReal, lang =edad_real(usuario_file)
 #lang = "en" 
+json_usuario = connect_mongodb(usuario)
+lang = user_info.get("lang", "Unknown")
 
 ### Start of Sidebar content ###
 with st.sidebar:
@@ -119,7 +121,7 @@ else:
 if st.session_state.selected_tab_id == TabsEnums.SUMMARY.value:
     render_summary_tab()
 elif st.session_state.selected_tab_id == TabsEnums.TAP.value:
-    render_json_tab()
+    render_tap_tab_json(json_usuario, lang)
 elif st.session_state.selected_tab_id == TabsEnums.READ.value:
     render_json_tab()
 elif st.session_state.selected_tab_id == TabsEnums.SIGN.value:

@@ -15,7 +15,7 @@ def render_json_tab():
     usuario_encr = st.query_params.feedback
     usuario = decrypt(usuario_encr)
 
-    datos_json = requests.post("https://sala114-4.tec.uam.es/appfiles/getAllUser", data={"maki": st.secrets["requets"]["maki"], "user_id": usuario})
+    datos_json = requests.post("https://sala114-4.tec.uam.es/appfiles/safeFeedback", data={"maki": st.secrets["requets"]["maki"], "user_id": usuario})
     st.warning(f'usuarioooo:{usuario}')
     st.warning(f'edaddddd:{datos_json.json()['response']['age']}')
     st.warning(f'init:{datos_json.json()['response']['init']}')
