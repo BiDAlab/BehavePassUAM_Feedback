@@ -150,7 +150,7 @@ def graficar_distribucion_probabilidad(velocidad_reaccion,lang):
 
 
 
-def render_tap_tab():
+def render_tap_tab_json():
     usuario_en = st.query_params.feedback
     usuario = decrypt(usuario_en)
     usuario_file=f'{usuario}/config.json'
