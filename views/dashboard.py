@@ -124,13 +124,13 @@ if st.session_state.selected_tab_id == TabsEnums.SUMMARY.value:
 elif st.session_state.selected_tab_id == TabsEnums.TAP.value:
     render_tap_tab_json(json_usuario, lang)
 elif st.session_state.selected_tab_id == TabsEnums.READ.value:
-    render_json_tab()
+    render_tap_tab_json(json_usuario, lang)
 elif st.session_state.selected_tab_id == TabsEnums.SIGN.value:
-    render_json_tab()
+    render_tap_tab_json(json_usuario, lang)
 elif st.session_state.selected_tab_id == TabsEnums.PATTERN.value:
-    render_json_tab()
+    render_tap_tab_json(json_usuario, lang)
 elif st.session_state.selected_tab_id == TabsEnums.GALLERY.value:
-    render_json_tab()
+    render_tap_tab_json(json_usuario, lang)
 
 # if st.session_state.selected_tab_id == TabsEnums.SUMMARY.value:
 #     render_summary_tab()
