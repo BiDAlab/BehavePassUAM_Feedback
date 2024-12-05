@@ -14,7 +14,11 @@ usuario = decrypt(usuario_en)
 usuario_file=f'{usuario}/config.json'
 #edadReal, lang =edad_real(usuario_file)
 #lang = "en" 
-json_usuario = connect_mongodb(usuario)
+try:
+    json_usuario = connect_mongodb(usuario)
+except Exception as e:
+    st.error(f"Error al conectar con el servidor FTPS: {e}")
+
 lang = user_info.get("lang", "Unknown")
 
 ### Start of Sidebar content ###
