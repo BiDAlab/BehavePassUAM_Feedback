@@ -5,7 +5,6 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-
 from utils import *
 
 def calculos_topos(datosTopo):
@@ -247,8 +246,8 @@ def render_tap_tab():
                 st.warning(f'Please return after completing session {num_Sesion}.')
 
                         
+                        
 def render_tap_tab_json(json_usuario, lang):
-    try:
         if lang == "es": #Versión español
             st.title('Rendimiento en el juego de los topos 🐭')
             st.header("¡Veamos tu velocidad de reacción 👆 y algunos datos interesantes sobre tu rendimiento!")
@@ -317,5 +316,3 @@ def render_tap_tab_json(json_usuario, lang):
                         st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
                 else:
                     st.warning(f'Please return after completing session {num_Sesion}.')
-    except Exception as e:
-        st.error(f"{e}")

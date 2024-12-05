@@ -3,11 +3,11 @@ from datetime import datetime
 import extra_streamlit_components as stx
 import streamlit as st
 from streamlit_extras.add_vertical_space import add_vertical_space
+import requests
 
 from utils import *
 from utils.enums import TabsEnums
 from views.tabs import *
-import requests
 
 
 usuario_en = st.query_params.feedback
@@ -122,10 +122,7 @@ else:
 if st.session_state.selected_tab_id == TabsEnums.SUMMARY.value:
     render_summary_tab()
 elif st.session_state.selected_tab_id == TabsEnums.TAP.value:
-    try:
-        render_tap_tab_json(json_usuario, lang)
-    except Exception as e:
-        st.error(f"{e}")
+    render_tap_tab_json(json_usuario, lang)
 elif st.session_state.selected_tab_id == TabsEnums.READ.value:
     render_tap_tab_json(json_usuario, lang)
 elif st.session_state.selected_tab_id == TabsEnums.SIGN.value:
