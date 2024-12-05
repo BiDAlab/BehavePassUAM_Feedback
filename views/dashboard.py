@@ -16,8 +16,7 @@ usuario_file=f'{usuario}/config.json'
 #edadReal, lang =edad_real(usuario_file)
 #lang = "en" 
 json_usuario = connect_mongodb(usuario)
-st.warning(f"{json_usuario}")
-lang = json_usuario['response'].get("lang", "Unknown")
+lang = json_usuario.get("lang", "Unknown")
 
 ### Start of Sidebar content ###
 with st.sidebar:
