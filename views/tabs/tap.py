@@ -246,7 +246,7 @@ def render_tap_tab():
                 st.warning(f'Please return after completing session {num_Sesion}.')
 
                         
-                        
+                    
 # def render_tap_tab_json(json_usuario, lang):
 #         if lang == "es": #Versión español
 #             st.title('Rendimiento en el juego de los topos 🐭')
