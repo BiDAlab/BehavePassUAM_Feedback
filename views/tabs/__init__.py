@@ -1,4 +1,4 @@
-from .summary import render_summary_tab
+from .summary import render_summary_tab, render_tap_tab_json
 #from .tap import render_tap_tab, render_tap_tab_json
 from .sign import render_sign_tab
 from .pattern import render_pattern_tab
