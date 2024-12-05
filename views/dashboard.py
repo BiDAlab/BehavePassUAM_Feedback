@@ -8,7 +8,6 @@ import requests
 from utils import *
 from utils.enums import TabsEnums
 from views.tabs import *
-import json
 
 
 usuario_en = st.query_params.feedback
@@ -17,7 +16,7 @@ usuario_file=f'{usuario}/config.json'
 #edadReal, lang =edad_real(usuario_file)
 #lang = "en" 
 json_usuario = connect_mongodb(usuario)
-lang = json_usuario.get("lang", "Unknown")
+lang = json_usuario['response'].get("lang", "Unknown")
 
 ### Start of Sidebar content ###
 with st.sidebar:
