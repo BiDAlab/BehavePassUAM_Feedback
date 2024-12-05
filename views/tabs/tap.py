@@ -118,7 +118,7 @@ def graficar_distribucion_probabilidad(velocidad_reaccion,lang):
 
         # Calcular y dibujar la línea para el usuario
         if velocidad_reaccion is not -1:
-            plt.axvline(x=linea_usuario.mean(), color='red', linestyle='-', label=f'Tu velocidad: {linea_usuario.mean():.1f} ms')
+            plt.axvline(x=velocidad_reaccion, color='red', linestyle='-', label=f'Tu velocidad: {velocidad_reaccion:.1f} ms')
 
         # Etiquetas y título
         plt.title('Distribución de los Tiempos de Reacción', fontsize=12)
