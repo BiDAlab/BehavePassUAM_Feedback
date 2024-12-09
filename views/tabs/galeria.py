@@ -281,15 +281,9 @@ def galeria(data_trazo):
 
 
 def render_galeria_tab_json(json_usuario, lang, sessionsPerf, lastSessionPer):
-    # s1_correct = int(json_usuario.get("questions", "unknown").get("s1_s1_correct", "Unknown"))
-    # s1_incorrect = int(json_usuario.get("questions", "unknown").get("s1_s1_incorrect", "Unknown"))
-    # s2_correct = int(json_usuario.get("questions", "unknown").get("s2_s2_correct", "Unknown"))
-    # s2_incorrect = int(json_usuario.get("questions", "unknown").get("s2_s2_incorrect", "Unknown"))
-    # s3_correct = int(json_usuario.get("questions", "unknown").get("s3_s3_correct", "Unknown"))
-    # s3_incorrect = int(json_usuario.get("questions", "unknown").get("s3_s3_incorrect", "Unknown"))
     s4_correct = int(json_usuario.get("visual_memory", "unknown").get("questions", "unknown").get("s4_s4_correct", "Unknown"))
     s4_incorrect = int(json_usuario.get("visual_memory", "unknown").get("questions", "unknown").get("s4_s4_incorrect", "Unknown"))
-    
+    lang = "en"
     ## EN ESPAÑOL ##
     if lang == "es":
         st.title('🖼️ Memoria Visual')
@@ -339,7 +333,7 @@ def render_galeria_tab_json(json_usuario, lang, sessionsPerf, lastSessionPer):
                 st.warning(f'Vuelve cuando hayas completado la sesión {num_Sesion}')
                 
 
-    ## PARTE EN INGLÉS ##            
+    ## PARTE EN INGLÉS ##       
     elif lang == "en":
         st.title('🖼️ Visual Memory')
         TextoInicio = """<p style="font-size:20px;">Visual memory is the ability to <strong>recall details of images</strong> that we observe. These details can include colors, shapes, or even the location of objects.</p>
@@ -351,44 +345,43 @@ def render_galeria_tab_json(json_usuario, lang, sessionsPerf, lastSessionPer):
         sesiones = ['s1', 's2', 's3', 's4']
         dividers = ['blue', 'green', 'orange', 'red']
 
-        # User decryption
-        usuario_en = st.query_params.feedback
-        usuario = decrypt(usuario_en)
-
-        # Check if session 4 is available
+        # Comprobamos si la sesión 4 está disponible
         st.header('Visual memory analysis')
-        sesion_4 = 's4'  # Expected name for session 4
-        zip_file_4 = f'{usuario}/{sesion_4}.zip'
-        target_file_4 = f'{sesion_4}/g/gallery/{sesion_4}_g_touch.csv'
-        df_sesion_4 = load_file_from_zip(zip_file_4, target_file_4)
-        target_file_answ_4 = f'{sesion_4}/g/gallery/{sesion_4}_g_touch_gallery_answers_events.csv'
-        df_answ_sesion_4 = load_file_from_zip(zip_file_4, target_file_answ_4)
 
-        # If session 4 has data, display the initial content
-        if not df_sesion_4.empty:
+        # Si la sesión 4 tiene datos, mostramos el contenido inicial
+        if lastSessionPer == "s4":
+            atras = int(json_usuario.get("visual_memory", "unknown").get("atras", "unknown").get("atras_s4", "Unknown"))
             TextoFirma = (
                 f'Based on the <strong>number of incorrect answers</strong> as well as the number of times you <strong>revisited</strong> the images to look at the details, we’ve determined that your <strong>visual memory</strong> is...'
             )
             st.markdown(f'<p style="font-size:18px;">{TextoFirma}</p>', unsafe_allow_html=True)
-            # Add more logic related to session 4 here
-            memoria_visual(df_sesion_4, df_answ_sesion_4,lang)
+            if (atras == 0) & (s4_correct == 4) & (s4_incorrect == 0):
+                st.success(f"🏆 **Amazing!** You have **perfect visual memory**! You didn’t make **any mistakes** and you **didn't need to go back** to see the images again.")
+            elif (atras == 0) & (s4_correct == 4) & (s4_incorrect > 0):
+                st.info(f"😀 **Good job!** Well done. You made **a few mistakes**. You had **{s4_incorrect} {'incorrect answer' if s4_incorrect == 1 else 'incorrect answers'}**. The number of times you **went back to see the images again is {atras}.**")
+            else:
+                st.info(f"⚠️ **Room for improvement** You could do better! **Pay more attention to the photos** next time. You had **{s4_incorrect} {'incorrect answer' if s4_incorrect == 1 else 'incorrect answers'}** and we detected that you **went back {atras} {'time' if atras == 1 else 'times'}.**")
+
+
         else: 
             st.warning(
                 f'Do you want to see a **more complete analysis** of your visual memory? **Come back after completing session 4**!'
             )
 
-        # Now iterate through the other sessions
-        for sesion in sesiones:
+        # Ahora iteramos las demás sesiones
+        for sesion in sessionsPerf:
             num_Sesion = int(sesion[-1])
             st.subheader(f'Session {num_Sesion}', divider=dividers[num_Sesion - 1])
+            n_correct = int(json_usuario.get("visual_memory", "unknown").get("questions", "unknown").get(f"s{num_Sesion}_s{num_Sesion}_correct", "Unknown"))
+            n_incorrect = int(json_usuario.get("visual_memory", "unknown").get("questions", "unknown").get(f"s{num_Sesion}_s{num_Sesion}_incorrect", "Unknown"))
 
-            if not df_answ.empty:
+            if n_correct != -1:
                 st.markdown(f"""
                     ### Resultados de las preguntas:
-                    - <span style="color:green; font-weight:bold;">Aciertos: {n_correctas}</span>
-                    - <span style="color:red; font-weight:bold;">Fallos: {n_incorrectas}</span>
+                    - <span style="color:green; font-weight:bold;">Aciertos: {n_correct}</span>
+                    - <span style="color:red; font-weight:bold;">Fallos: {n_incorrect}</span>
                     """, unsafe_allow_html=True)
             else:
                 st.warning(f'Come back after completing session {num_Sesion}')
 
-
+   
