@@ -132,5 +132,5 @@ elif st.session_state.selected_tab_id == TabsEnums.SIGN.value:
 elif st.session_state.selected_tab_id == TabsEnums.PATTERN.value:
     render_pattern_tab_json(json_usuario, lang, sessionsPerf)
 elif st.session_state.selected_tab_id == TabsEnums.GALLERY.value:
-    st.warning(f"{json_usuario.get("lastSessionsPerformed", "unknown")}")
+    st.warning(f"{json_usuario.get("questions", "unknown")}")
     render_galeria_tab_json(json_usuario, lang, sessionsPerf, lastSessionPer)
