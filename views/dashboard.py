@@ -126,7 +126,7 @@ if st.session_state.selected_tab_id == TabsEnums.SUMMARY.value:
     st.warning(f"{average_dtw_distance[-1]}")
     if "s4" in average_dtw_distance:
         st.warning("Hayyyy")
-    render_summary_tab()
+    render_summary_tab(lang)
 elif st.session_state.selected_tab_id == TabsEnums.TAP.value:
     render_tap_tab_json(json_usuario, lang)
 elif st.session_state.selected_tab_id == TabsEnums.READ.value:
