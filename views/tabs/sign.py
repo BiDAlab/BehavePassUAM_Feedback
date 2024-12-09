@@ -513,7 +513,7 @@ def render_sign_tab_json(json_usuario, lang):
         st.markdown(f'<p style="font-size:20px;">{TextoConsistencia}</p>', unsafe_allow_html=True)
         
         if average_dtw_distance != -1:        
-        TextoFirma = f'Analyzing the similarity of <strong>two of your signatures</strong>, we have derived the following results about the <strong>consistency</strong> of your signature.'
+            TextoFirma = f'Analyzing the similarity of <strong>two of your signatures</strong>, we have derived the following results about the <strong>consistency</strong> of your signature.'
             st.markdown(f'<p style="font-size:18px;">{TextoFirma}</p>', unsafe_allow_html=True)
 
             # Comentarios de consistencia
