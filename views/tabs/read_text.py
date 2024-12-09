@@ -295,7 +295,7 @@ def predecir_edad(datosKey, datosKeyAns, data_trazo_lectura, data_respuesta_lect
 
 
 def render_read_tab_json(json_usuario, lang):
-    age_pred = json_usuario.get("age_predict", {}).get("aprox_age", "Unknown")
+    age_pred = json_usuario.get("age_predict", "unkown").get("aprox_age", "Unknown")
     
     if lang == "es":
         st.title('🎯 Predicción de Edad')
