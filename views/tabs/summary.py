@@ -2,6 +2,7 @@ import streamlit as st
 from utils import *
 
 def render_summary_tab(lang, lastSessionPer):
+    lang = "en"
     if lang == "es": #Versión Español
         cols = st.columns([1,3,1], vertical_alignment='center')
         cols[0].write('')
