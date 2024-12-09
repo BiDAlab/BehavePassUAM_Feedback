@@ -441,6 +441,7 @@ def analisis_consistencia(xs1, ys1, xs4, ys4, lang):
 
         
 def render_sign_tab_json(json_usuario, lang):
+    st.warning("HOLA")
     average_dtw_distance = json_usuario.get("sign", {}).get("consistency", {}).get("avg_dtw_distance", None) #Medida consistencia
 
     duracion = json_usuario.get("sign", {}).get("complexity", {}).get("duracion", None) #Medida complejidad - duracion
