@@ -329,7 +329,7 @@ def render_galeria_tab_json(json_usuario, lang, sessionsPerf, lastSessionPer):
             n_correct = int(json_usuario.get("visual_memory", "unknown").get("questions", "unknown").get(f"s{num_Sesion}_s{num_Sesion}_correct", "Unknown"))
             n_incorrect = int(json_usuario.get("visual_memory", "unknown").get("questions", "unknown").get(f"s{num_Sesion}_s{num_Sesion}_incorrect", "Unknown"))
 
-            if not df_answ.empty:
+            if n_correct != -1:
                 st.markdown(f"""
                     ### Resultados de las preguntas:
                     - <span style="color:green; font-weight:bold;">Aciertos: {n_correctas}</span>
