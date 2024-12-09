@@ -248,7 +248,6 @@ def graficar_distribucion_probabilidad(velocidad_reaccion,lang):
                         
                     
 def render_tap_tab_json(json_usuario, lang):
-    st.warning("HOLA")
     if lang == "es": #Versión español
                 st.title('Rendimiento en el juego de los topos 🐭')
                 st.header("¡Veamos tu velocidad de reacción 👆 y algunos datos interesantes sobre tu rendimiento!")

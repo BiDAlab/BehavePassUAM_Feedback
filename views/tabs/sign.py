@@ -313,12 +313,139 @@ def analisis_consistencia(xs1, ys1, xs4, ys4, lang):
 
 
 
-def render_sign_tab():
-    usuario_en = st.query_params.feedback
-    usuario = decrypt(usuario_en)
-    usuario_file=f'{usuario}/config.json'
-    edadReal, lang =edad_real(usuario_file)
-    #lang = "en" 
+# def render_sign_tab():
+#     usuario_en = st.query_params.feedback
+#     usuario = decrypt(usuario_en)
+#     usuario_file=f'{usuario}/config.json'
+#     edadReal, lang =edad_real(usuario_file)
+#     #lang = "en" 
+
+#     if lang == "es": #Versión Español   
+#         st.title('✒️ Firma')
+#         TextoInicio = """<p style="font-size:20px;">En este apartado analizaremos tu firma de dos maneras diferentes a través de la <strong>complejidad</strong> y de la <strong>consistencia</strong>. Estos dos factores son muy importantes a la hora de evaluar su seguridad y autenticidad.</p>
+#                                     <p style="font-size:20px;">Para que una firma sea segura, debe lograr un equilibrio entre <strong>complejidad</strong> y <strong>consistencia</strong>, siendo compleja de imitar, pero consistente para quien la produce.</p>"""
+#         st.markdown(f'<p style="font-size:20px;">{TextoInicio}</p>', unsafe_allow_html=True)
+
+#         usuario_en = st.query_params.feedback
+#         usuario = decrypt(usuario_en)
+#         consistencia = 0 # Cuando sea 2 se calculara la consistencia entre s1 y s4
+#         X_firmasS1S4, Y_firmasS1S4 = [], []
+
+#         ### CONSISTENCIA ###
+#         sesiones = ['s1', 's2']
+#         st.header(f'Consistencia', divider=False)
+#         TextoConsistencia="""<p style="font-size:18px;"><strong>Análisis de Consistencia:</strong> A partir del análisis de la consistencia, examinaremos la capacidad de reproducir la firma de manera similar en diferentes momentos. La consistencia es clave para la autenticidad, ya que, para que una firma sea segura, debe mantener un estilo y patrones reconocibles.</p>"""
+#         st.markdown(f'<p style="font-size:20px;">{TextoConsistencia}</p>', unsafe_allow_html=True)
+#         for sesion in sesiones:
+#             num_Sesion=int(sesion[-1])
+#             zip_file=f'{usuario}/{sesion}.zip'
+#             target_file=f'{sesion}/g/sign/{sesion}_g_touch.csv'
+#             df=load_file_from_zip(zip_file, target_file)
+
+#             # Comprobamos que hay datos para representar
+#             if not df.empty:
+#                 # Sacamos las señales
+#                 signX, signY =   conseguir_signal(df)
+                
+#                 # Guardamos las señales para cosistencia
+#                 if  (sesion == 's1') or (sesion == 's2'):
+#                     X_firmasS1S4.extend([signX])
+#                     Y_firmasS1S4.extend([signY])
+#                     consistencia=consistencia+1
+        
+#         if consistencia == 2:        
+#             analisis_consistencia(X_firmasS1S4[0], Y_firmasS1S4[0], X_firmasS1S4[1], Y_firmasS1S4[1], lang)
+#         else:
+#             st.warning(f'La **consistencia** se mostrara cuando hayas acabado la **sesión 2**. Vuelve cuando la hayas acabado.') 
+    
+
+#         ### COMPLEJIDAD ###
+#         st.header(f'Complejidad', divider=False)
+#         TextoComplejidad = """<p style="font-size:18px;"><strong>Análisis de Complejidad:</strong> Con el análisis de la complejidad podemos observar qué elementos hacen que tu firma sea difícil de imitar. Esto incluye la velocidad a la que la realizas, el número de trazos que utilizas, entre otros detalles únicos que la caracterizan. Cuanto más compleja sea tu firma, más difícil será para otra persona replicarla. La complejidad ayuda a que la firma sea un elemento único y distintivo.</p>"""
+#         st.markdown(f'<p style="font-size:20px;">{TextoComplejidad}</p>', unsafe_allow_html=True)
+        
+#         #Sacamos los datos de la BBDD
+#         zip_file=f'{usuario}/s4.zip'
+#         target_file=f's4/g/sign/s4_g_touch.csv'
+#         df=load_file_from_zip(zip_file, target_file)
+
+#         # Comprobamos que hay datos para representar
+#         if not df.empty:
+#             TextoFirma=f'A partir de <strong>de las firmas</strong> que realizaste en la <strong>sesión 4</strong> hemos considerado que...'
+#             st.markdown(f'<p style="font-size:18px;">{TextoFirma}</p>', unsafe_allow_html=True)
+#             #st.dataframe(df)
+#             signX, signY=pintar_firma_analizar(df,lang) 
+
+
+#         else:
+#             st.warning(f'La **complejidad** se mostrara cuando hayas acabado la **sesión 4**. Vuelve cuando la hayas acabado')
+    
+#     elif lang == "en":
+#         st.title('✒️ Signature')
+#         TextoInicio = """<p style="font-size:20px;">In this section, we will analyze your signature in two different ways: through its <strong>complexity</strong> and <strong>consistency</strong>. These two factors are crucial when evaluating its security and authenticity.</p>
+#                         <p style="font-size:20px;">For a signature to be secure, it must strike a balance between <strong>complexity</strong> and <strong>consistency</strong>, being difficult to imitate yet consistent for the signer.</p>"""
+#         st.markdown(f'<p style="font-size:20px;">{TextoInicio}</p>', unsafe_allow_html=True)
+
+#         #usuario_en = st.query_params.feedback
+#         #usuario = decrypt(usuario_en)
+#         consistencia = 0  # When it's 2, consistency between s1 and s4 will be calculated
+#         X_firmasS1S4, Y_firmasS1S4 = [], []
+
+#         ### CONSISTENCY ###
+#         sesiones = ['s1', 's2']
+#         st.header(f'Consistency', divider=False)
+#         TextoConsistencia = """<p style="font-size:18px;"><strong>Consistency Analysis:</strong> Through the consistency analysis, we examine your ability to reproduce your signature similarly across different sessions. Consistency is key for authenticity, as a secure signature must maintain recognizable styles and patterns.</p>"""
+#         st.markdown(f'<p style="font-size:20px;">{TextoConsistencia}</p>', unsafe_allow_html=True)
+
+#         for sesion in sesiones:
+#             num_Sesion = int(sesion[-1])
+#             zip_file = f'{usuario}/{sesion}.zip'
+#             target_file = f'{sesion}/g/sign/{sesion}_g_touch.csv'
+#             df = load_file_from_zip(zip_file, target_file)
+
+#             # Check if data is available
+#             if not df.empty:
+#                 # Extract signals
+#                 signX, signY = conseguir_signal(df)
+
+#                 # Store signals for consistency
+#                 if (sesion == 's1') or (sesion == 's2'):
+#                     X_firmasS1S4.extend([signX])
+#                     Y_firmasS1S4.extend([signY])
+#                     consistencia += 1
+
+#         if consistencia == 2:        
+#             analisis_consistencia(X_firmasS1S4[0], Y_firmasS1S4[0], X_firmasS1S4[1], Y_firmasS1S4[1],lang)
+#         else:
+#             st.warning(f'**Consistency** will be displayed once you complete **session 2**. Please return after finishing it.') 
+
+#         ### COMPLEXITY ###
+#         st.header(f'Complexity', divider=False)
+#         TextoComplejidad = """<p style="font-size:18px;"><strong>Complexity Analysis:</strong> Through complexity analysis, we explore what makes your signature difficult to replicate. This includes factors such as the speed of execution, the number of strokes used, and other unique traits. The more complex your signature is, the harder it is for someone else to replicate. Complexity ensures that your signature is unique and distinctive.</p>"""
+#         st.markdown(f'<p style="font-size:20px;">{TextoComplejidad}</p>', unsafe_allow_html=True)
+
+#         # Retrieve data from the database
+#         zip_file = f'{usuario}/s4.zip'
+#         target_file = f's4/g/sign/s4_g_touch.csv'
+#         df = load_file_from_zip(zip_file, target_file)
+
+#         # Check if data is available
+#         if not df.empty:
+#             TextoFirma = f'Based on the <strong>signatures</strong> you provided during <strong>session 4</strong>, we have determined that...'
+#             st.markdown(f'<p style="font-size:18px;">{TextoFirma}</p>', unsafe_allow_html=True)
+#             # st.dataframe(df)
+#             signX, signY = pintar_firma_analizar(df,lang) 
+#         else:
+#             st.warning(f'**Complexity** will be displayed once you complete **session 4**. Please return after finishing it.')
+
+
+        
+def render_sign_tab_json(json_usuario, lang):
+    average_dtw_distance = json_usuario.get("sign", {}).get("consistency", {}).get("avg_dtw_distance", None) #Medida consistencia
+
+    duracion = json_usuario.get("sign", {}).get("complexity", {}).get("duracion", None) #Medida complejidad - duracion
+    num_arriba = json_usuario.get("sign", {}).get("complexity", {}).get("num_arriba", None) #Medida complejidad - num_arriba
+    total_distance = json_usuario.get("sign", {}).get("complexity", {}).get("total_distance", None) #Medida complejidad - total_distance
 
     if lang == "es": #Versión Español   
         st.title('✒️ Firma')
@@ -331,30 +458,22 @@ def render_sign_tab():
         consistencia = 0 # Cuando sea 2 se calculara la consistencia entre s1 y s4
         X_firmasS1S4, Y_firmasS1S4 = [], []
 
-        ### CONSISTENCIA ###
-        sesiones = ['s1', 's2']
+        ### CONSISTENCIA ##
         st.header(f'Consistencia', divider=False)
         TextoConsistencia="""<p style="font-size:18px;"><strong>Análisis de Consistencia:</strong> A partir del análisis de la consistencia, examinaremos la capacidad de reproducir la firma de manera similar en diferentes momentos. La consistencia es clave para la autenticidad, ya que, para que una firma sea segura, debe mantener un estilo y patrones reconocibles.</p>"""
         st.markdown(f'<p style="font-size:20px;">{TextoConsistencia}</p>', unsafe_allow_html=True)
-        for sesion in sesiones:
-            num_Sesion=int(sesion[-1])
-            zip_file=f'{usuario}/{sesion}.zip'
-            target_file=f'{sesion}/g/sign/{sesion}_g_touch.csv'
-            df=load_file_from_zip(zip_file, target_file)
-
-            # Comprobamos que hay datos para representar
-            if not df.empty:
-                # Sacamos las señales
-                signX, signY =   conseguir_signal(df)
-                
-                # Guardamos las señales para cosistencia
-                if  (sesion == 's1') or (sesion == 's2'):
-                    X_firmasS1S4.extend([signX])
-                    Y_firmasS1S4.extend([signY])
-                    consistencia=consistencia+1
         
-        if consistencia == 2:        
-            analisis_consistencia(X_firmasS1S4[0], Y_firmasS1S4[0], X_firmasS1S4[1], Y_firmasS1S4[1], lang)
+        if average_dtw_distance != -1:        
+            TextoFirma=f'Analizando el parecido de <strong>dos de tus firmas</strong> hemos conseguido sacar los siguientes resultados sobre la <strong>consistencia</strong> de tu firma.'
+            st.markdown(f'<p style="font-size:18px;">{TextoFirma}</p>', unsafe_allow_html=True)
+
+            # Comentarios de consistencia
+            if average_dtw_distance < 3:
+                st.success("**¡Excelente!** 🎉 Tus firmas son **muy consistentes**, lo que muestra una gran precisión en tus trazos. ¡Sigue así!")
+            elif average_dtw_distance < 9:
+                st.info("**¡Buen trabajo!** 👍 Tus firmas tienen **pequeñas variaciones**, pero en general muestran una **buena consistencia**. Con un poco de práctica, podrían ser aún más uniformes.")
+            else:
+                st.warning("Interesante... 🤔 Tus firmas muestran **diferencias notables** entre sesiones. Esto puede indicar cambios en tu trazo o estilo. ¡No te preocupes! Practicar puede ayudarte a lograr una firma más constante.")
         else:
             st.warning(f'La **consistencia** se mostrara cuando hayas acabado la **sesión 2**. Vuelve cuando la hayas acabado.') 
     
@@ -363,18 +482,25 @@ def render_sign_tab():
         st.header(f'Complejidad', divider=False)
         TextoComplejidad = """<p style="font-size:18px;"><strong>Análisis de Complejidad:</strong> Con el análisis de la complejidad podemos observar qué elementos hacen que tu firma sea difícil de imitar. Esto incluye la velocidad a la que la realizas, el número de trazos que utilizas, entre otros detalles únicos que la caracterizan. Cuanto más compleja sea tu firma, más difícil será para otra persona replicarla. La complejidad ayuda a que la firma sea un elemento único y distintivo.</p>"""
         st.markdown(f'<p style="font-size:20px;">{TextoComplejidad}</p>', unsafe_allow_html=True)
-        
-        #Sacamos los datos de la BBDD
-        zip_file=f'{usuario}/s4.zip'
-        target_file=f's4/g/sign/s4_g_touch.csv'
-        df=load_file_from_zip(zip_file, target_file)
 
         # Comprobamos que hay datos para representar
-        if not df.empty:
+        if duracion!= -1 and num_arriba != -1 and total_distance != -1:
             TextoFirma=f'A partir de <strong>de las firmas</strong> que realizaste en la <strong>sesión 4</strong> hemos considerado que...'
             st.markdown(f'<p style="font-size:18px;">{TextoFirma}</p>', unsafe_allow_html=True)
-            #st.dataframe(df)
-            signX, signY=pintar_firma_analizar(df,lang) 
+
+
+            # Complejidad alata (todo por encima del percentil 75)
+            if (duracion >= 4.1617) & (num_arriba >= 5) & (total_distance >= 86.4499):
+                st.success("🏆 Tu firma es **muy detallada y compleja**.")
+            # Complejidad medio alta (alguno de los parámetros está por encima del percentil 75)
+            elif  (duracion >= 4.1617) | (num_arriba >= 5) | (total_distance >= 86.4499):
+                st.success("🤩 Tu firma es **bastante detallada y compleja**.")
+            # Complejidad medio baja (todo está por encima del percentil 25, pero nada por encima del percentil 75)
+            elif (duracion >= 1.4849) & (num_arriba >= 1) & (total_distance >= 41.15161):
+                st.info("😀 Tu firma tiene un **balance entre simplicidad y detalle**.")
+            # Complejidad baja (todo está por debajo del percentil 25)
+            else:
+                st.warning("⚠️ Tu firma es **simple**, considera si es suficientemente distintiva.")
 
 
         else:
@@ -437,7 +563,3 @@ def render_sign_tab():
             signX, signY = pintar_firma_analizar(df,lang) 
         else:
             st.warning(f'**Complexity** will be displayed once you complete **session 4**. Please return after finishing it.')
-
-
-        
-        
