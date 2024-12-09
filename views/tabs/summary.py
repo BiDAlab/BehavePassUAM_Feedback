@@ -111,38 +111,107 @@ def render_summary_tab(lang, lastSessionPer):
             st.markdown(f"""<div style="border: 10px solid #e7f3fe; padding: 10px; border-radius: 15px; font-size: 17px; background-color: transparent;"> {info_message}</div>""",unsafe_allow_html=True)
     
 
-    elif lang == "en": #Versión inglés
-        cols = st.columns([1,3,1], vertical_alignment='center')
+    elif lang == "en":  # English Version
+        cols = st.columns([1, 3, 1], vertical_alignment='center')
         cols[0].write('')
         cols[2].write('')
         with cols[1]:
             st.header('Welcome to your BehavePassUAM dashboard!')
             st.subheader('We are so happy you are here! This is where you can view the performance of your sessions and see your progress in the app.')
-    
+        
             st.divider()
-            info_message = """
-            <p style="font-size:20px;">At the end of each session, you will receive a <strong>personalized link</strong> with interesting information about the tests you have completed. It is <b>important that you <u>DO NOT share</u> this link</b> with anyone to protect your privacy. 🔒</p>
-            <hr>
-            <p style="font-size:20px;">On this page, you will find the following <b>information</b> about the <b><u>tasks completed during the 4 sessions</u></b>:<br><br>
-            <b><i>- Tap the Mole</i></b> 🐹: you will learn about your reaction speed in the mole tapping task. Additionally, you will be able to compare your speed with other BehavePassUAM users.<br>
-            <b><i>- Signature</i></b> ✒️: we assess how secure your signature is based on its complexity and consistency.<br>
-            <b><i>- Unlock Pattern</i></b> 🔒: you can find out if your unlock pattern is one of the most common among the population.<br>
-            <b><i>- Age Prediction</i></b> 🎯: we try to estimate your age range based on how you interact with the mobile device.<br>
-            <b><i>- Gallery</i></b> 🖼️: we evaluate your level of visual memory based on the data collected in the gallery task.</p>
-            <hr>
-            <p style="font-size:20px;">If you liked ♥️ this information, remember to <b>share the app</b> with your family and friends to get more chances to win in the raffles! And don't forget to <b>follow us</b> on our <b>social media</b>! This way, you help more people join the research study and, on top of that, you earn more points for the raffles we organize!<br><br> Thank you so much for participating <b>in this research project</b> and <b>good luck 🍀</b> in the raffles!</p>
-            <hr>
-            <p style="font-size:20px; text-align:center;">Follow us on our social media:</p>
-            <p style="font-size:20px; text-align:center;">
-                <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbehavepassuam" target="_blank" style="text-decoration:none; font-size:20px;">🐦 Twitter</a><br>
-                <a href="https://www.instagram.com/behavepassuam/?igsh=OHk5OXlnZG90cGFv" target="_blank" style="text-decoration:none; font-size:20px;">📸 Instagram</a><br>
-                <a href="https://www.facebook.com/people/Behavepassuam/61567187651116/" target="_blank" style="text-decoration:none; font-size:20px;">📘 Facebook</a><br>
-                <a href="https://behavepassuam.humanairesearch.com/es" target="_blank" style="text-decoration:none; font-size:20px;">💻 Web page</a>
-            </p>
-            """
 
+            if lastSessionPer == 's1':
+                info_message = """
+                <p style="font-size:20px;">At the end of each session, you will receive a <strong>personalized link</strong> with interesting information about the tests you have completed. It is <b>important that you <u>DO NOT share</u> this link</b> with anyone to protect your privacy. 🔒</p>
+                <hr>
+                <p style="font-size:20px;">🔓 After completing <strong>session 1</strong>, you will find the following <b>information</b> about the <b><u>tasks performed during the session</u></b>:<br><br>
+                <b><i>- Tap the Mole</i></b> 🐹: you will learn about your reaction speed in the mole tapping task. Additionally, you will be able to compare your speed with other BehavePassUAM users.<br>
+                <b><i>- Age Prediction</i></b> 🎯: we will try to estimate your age range based on how you interact with the mobile device.<br>
+                <b><i>- Gallery</i></b> 🖼️: we tell you the number of correct and incorrect answers.</p><br>
+                <p style="font-size:20px;">🔒 After completing the remaining <strong>sessions</strong>, you will be able to unlock <strong>more information</strong>:<br><br>
+                <b><i>- Signature</i></b> ✒️: we assess how secure your signature is based on its complexity and consistency.<br>
+                <b><i>- Unlock Pattern</i></b> 🔒: you will find out if your unlock pattern is one of the most common among the population.<br>
+                <b><i>- Gallery</i></b> 🖼️: we assess your level of visual memory based on the data collected in the gallery task.</p>
+                <hr>
+                <p style="font-size:20px;">If you liked ♥️ this information, remember to <b>share the app</b> with your family and friends to get more chances to win in the raffles! And don't forget to <b>follow us</b> on our <b>social media</b>! This way, you help more people join the research study and, on top of that, you earn more points for the raffles we organize!<br><br> Thank you so much for participating <b>in this research project</b> and <b>good luck 🍀</b> in the raffles!</p>
+                <hr>
+                <p style="font-size:20px; text-align:center;">Follow us on our social media:</p>
+                <p style="font-size:20px; text-align:center;">
+                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbehavepassuam" target="_blank" style="text-decoration:none; font-size:20px;">🐦 Twitter</a><br>
+                    <a href="https://www.instagram.com/behavepassuam/?igsh=OHk5OXlnZG90cGFv" target="_blank" style="text-decoration:none; font-size:20px;">📸 Instagram</a><br>
+                    <a href="https://www.facebook.com/people/Behavepassuam/61567187651116/" target="_blank" style="text-decoration:none; font-size:20px;">📘 Facebook</a><br>
+                    <a href="https://behavepassuam.humanairesearch.com/es" target="_blank" style="text-decoration:none; font-size:20px;">💻 Web page</a>
+                </p>
+                """
+            elif lastSessionPer == 's2':
+                info_message = """
+                <p style="font-size:20px;">At the end of each session, you will receive a <strong>personalized link</strong> with interesting information about the tests you have completed. It is <b>important that you <u>DO NOT share</u> this link</b> with anyone to protect your privacy. 🔒</p>
+                <hr>
+                <p style="font-size:20px;">🔓 After completing <strong>session 2</strong>, you will find the following <b>information</b> about the <b><u>tasks performed during the session</u></b>:<br><br>
+                <b><i>- Tap the Mole</i></b> 🐹: you will learn about your reaction speed in the mole tapping task. Additionally, you will be able to compare your speed with other BehavePassUAM users.<br>
+                <b><i>- Age Prediction</i></b> 🎯: we will try to estimate your age range based on how you interact with the mobile device.<br>
+                <b><i>- Gallery</i></b> 🖼️: we tell you the number of correct and incorrect answers.<br>
+                <b><i>- Signature</i></b> ✒️: we assess how secure your signature is based on its consistency.</p><br>
+                <p style="font-size:20px;">🔒 After completing the remaining <strong>sessions</strong>, you will be able to unlock <strong>more information</strong>:<br><br>
+                <b><i>- Signature</i></b> ✒️: we assess how secure your signature is based on its complexity.<br>
+                <b><i>- Unlock Pattern</i></b> 🔒: you will find out if your unlock pattern is one of the most common among the population.<br>
+                <b><i>- Gallery</i></b> 🖼️: we assess your level of visual memory based on the data collected in the gallery task.</p>
+                <hr>
+                <p style="font-size:20px;">If you liked ♥️ this information, remember to <b>share the app</b> with your family and friends to get more chances to win in the raffles! And don't forget to <b>follow us</b> on our <b>social media</b>! This way, you help more people join the research study and, on top of that, you earn more points for the raffles we organize!<br><br> Thank you so much for participating <b>in this research project</b> and <b>good luck 🍀</b> in the raffles!</p>
+                <hr>
+                <p style="font-size:20px; text-align:center;">Follow us on our social media:</p>
+                <p style="font-size:20px; text-align:center;">
+                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbehavepassuam" target="_blank" style="text-decoration:none; font-size:20px;">🐦 Twitter</a><br>
+                    <a href="https://www.instagram.com/behavepassuam/?igsh=OHk5OXlnZG90cGFv" target="_blank" style="text-decoration:none; font-size:20px;">📸 Instagram</a><br>
+                    <a href="https://www.facebook.com/people/Behavepassuam/61567187651116/" target="_blank" style="text-decoration:none; font-size:20px;">📘 Facebook</a><br>
+                    <a href="https://behavepassuam.humanairesearch.com/es" target="_blank" style="text-decoration:none; font-size:20px;">💻 Web page</a>
+                </p>
+                """
+            elif lastSessionPer == 's3':
+                info_message = """
+                <p style="font-size:20px;">At the end of each session, you will receive a <strong>personalized link</strong> with interesting information about the tests you have completed. It is <b>important that you <u>DO NOT share</u> this link</b> with anyone to protect your privacy. 🔒</p>
+                <hr>
+                <p style="font-size:20px;">🔓 After completing <strong>session 3</strong>, you will find the following <b>information</b> about the <b><u>tasks performed during the session</u></b>:<br><br>
+                <b><i>- Tap the Mole</i></b> 🐹: you will learn about your reaction speed in the mole tapping task. Additionally, you will be able to compare your speed with other BehavePassUAM users.<br>
+                <b><i>- Age Prediction</i></b> 🎯: we will try to estimate your age range based on how you interact with the mobile device.<br>
+                <b><i>- Gallery</i></b> 🖼️: we tell you the number of correct and incorrect answers.<br>
+                <b><i>- Signature</i></b> ✒️: we assess how secure your signature is based on its consistency.<br>
+                <b><i>- Unlock Pattern</i></b> 🔒: you will find out if your unlock pattern is one of the most common among the population.<br></p><br>
+                <p style="font-size:20px;">🔒 After completing the last <strong>sessions</strong>, you will be able to unlock <strong>more information</strong>:<br><br>
+                <b><i>- Signature</i></b> ✒️: we assess how secure your signature is based on its complexity.<br>
+                <b><i>- Gallery</i></b> 🖼️: we assess your level of visual memory based on the data collected in the gallery task.</p>
+                <hr>
+                <p style="font-size:20px;">If you liked ♥️ this information, remember to <b>share the app</b> with your family and friends to get more chances to win in the raffles! And don't forget to <b>follow us</b> on our <b>social media</b>! This way, you help more people join the research study and, on top of that, you earn more points for the raffles we organize!<br><br> Thank you so much for participating <b>in this research project</b> and <b>good luck 🍀</b> in the raffles!</p>
+                <hr>
+                <p style="font-size:20px; text-align:center;">Follow us on our social media:</p>
+                <p style="font-size:20px; text-align:center;">
+                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbehavepassuam" target="_blank" style="text-decoration:none; font-size:20px;">🐦 Twitter</a><br>
+                    <a href="https://www.instagram.com/behavepassuam/?igsh=OHk5OXlnZG90cGFv" target="_blank" style="text-decoration:none; font-size:20px;">📸 Instagram</a><br>
+                    <a href="https://www.facebook.com/people/Behavepassuam/61567187651116/" target="_blank" style="text-decoration:none; font-size:20px;">📘 Facebook</a><br>
+                    <a href="https://behavepassuam.humanairesearch.com/es" target="_blank" style="text-decoration:none; font-size:20px;">💻 Web page</a>
+                </p>
+                """
+            else:
+                info_message = """
+                <p style="font-size:20px;">At the end of each session, you will receive a <strong>personalized link</strong> with interesting information about the tests you have completed. It is <b>important that <u>DO NOT share</u> this link</b> with anyone to protect your privacy. 🔒</p>
+                <hr>
+                <p style="font-size:20px;">On this page, you will find the following <b>information</b> about the <b><u>tasks performed during the 4 sessions</u></b>:<br><br>
+                <b><i>- Tap the Mole</i></b> 🐹: you will learn about your reaction speed in the mole tapping task. Additionally, you will be able to compare your speed with other BehavePassUAM users.<br>
+                <b><i>- Signature</i></b> ✒️: we evaluate how secure your signature is based on its complexity and consistency.<br>
+                <b><i>- Unlock Pattern</i></b> 🔒: you will find out if your unlock pattern is one of the most common among the population.<br>
+                <b><i>- Age Prediction</i></b> 🎯: we will try to estimate your age range based on how you interact with the mobile device.<br>
+                <b><i>- Gallery</i></b> 🖼️: we assess your level of visual memory based on the data collected in the gallery task.</p>
+                <hr>
+                <p style="font-size:20px;">If you liked ♥️ this information, remember to <b>share the app</b> with your family and friends to get more chances to win in the raffles! And don't forget to <b>follow us</b> on our <b>social media</b>! This way, you help more people join the research study and, on top of that, you earn more points for the raffles we organize!<br><br> Thank you so much for participating <b>in this research project</b> and <b>good luck 🍀</b> in the raffles!</p>
+                <hr>
+                <p style="font-size:20px; text-align:center;">Follow us on our social media:</p>
+                <p style="font-size:20px; text-align:center;">
+                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbehavepassuam" target="_blank" style="text-decoration:none; font-size:20px;">🐦 Twitter</a><br>
+                    <a href="https://www.instagram.com/behavepassuam/?igsh=OHk5OXlnZG90cGFv" target="_blank" style="text-decoration:none; font-size:20px;">📸 Instagram</a><br>
+                    <a href="https://www.facebook.com/people/Behavepassuam/61567187651116/" target="_blank" style="text-decoration:none; font-size:20px;">📘 Facebook</a><br>
+                    <a href="https://behavepassuam.humanairesearch.com/es" target="_blank" style="text-decoration:none; font-size:20px;">💻 Web page</a>
+                </p>
+                """
 
-            # Mostrar el mensaje en el recuadro azul
-            #st.markdown(f'<div style="background-color: #e7f3fe; padding: 10px; border-radius: 15px; font-size: 17px;">{info_message}</div>', unsafe_allow_html=True)
-            st.markdown(f"""<div style="border: 10px solid #e7f3fe; padding: 10px; border-radius: 15px; font-size: 17px; background-color: transparent;"> {info_message}</div>""",unsafe_allow_html=True)
-
+            st.markdown(info_message, unsafe_allow_html=True)
