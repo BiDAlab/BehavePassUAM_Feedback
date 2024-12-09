@@ -283,7 +283,7 @@ def galeria(data_trazo):
 def render_galeria_tab_json(json_usuario, lang, sessionsPerf, lastSessionPer):
     s4_correct = int(json_usuario.get("visual_memory", "unknown").get("questions", "unknown").get("s4_s4_correct", "Unknown"))
     s4_incorrect = int(json_usuario.get("visual_memory", "unknown").get("questions", "unknown").get("s4_s4_incorrect", "Unknown"))
-    lang = "en"
+
     ## EN ESPAÑOL ##
     if lang == "es":
         st.title('🖼️ Memoria Visual')
