@@ -269,14 +269,14 @@ def render_tap_tab_json(json_usuario, lang):
                     if velocidad_usuario != -1:                
                         graficar_distribucion_probabilidad(velocidad_usuario,lang)
                         if velocidad_usuario < 300.0:
-                            TextoVelocidad=f'<b>¡Impresionante!</b> Tu velocidad de reacción en esta sesión ({velocidad_usuario}ms) está muy por encima de la media de los usuarios de BehavePassUAM.'
+                            TextoVelocidad=f'<b>¡Impresionante!</b> Tu velocidad de reacción en esta sesión ({velocidad_usuario.round()}ms) está muy por encima de la media de los usuarios de BehavePassUAM.'
                             st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
                             #st.write(f'¡Impresionante! Tu velocidad de reacción ({velocidad_usuario.mean().round()}ms) está por encima de la media de los usuarios de BehavePassUAM.')
                         elif velocidad_usuario > 300.0 and 600.0 > velocidad_usuario:
-                            TextoVelocidad=f'Tu velocidad de reacción en esta sesión ({velocidad_usuario}ms) está en el rango promedio (300ms - 600ms) de los usuarios de BehavePassUAM.'
+                            TextoVelocidad=f'Tu velocidad de reacción en esta sesión ({velocidad_usuario.round()}ms) está en el rango promedio (300ms - 600ms) de los usuarios de BehavePassUAM.'
                             st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
                         elif 600.0 < velocidad_usuario:
-                            TextoVelocidad=f'Tu velocidad de reacción en esta sesión ({velocidad_usuario}ms) está por debajo de la media de los usuarios de BehavePassUAM. '
+                            TextoVelocidad=f'Tu velocidad de reacción en esta sesión ({velocidad_usuario.round()}ms) está por debajo de la media de los usuarios de BehavePassUAM. '
                             st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
                             #st.write(f'Vaya... Tu velocidad de reacción ({velocidad_usuario.mean().round()}ms) está por debajo de la media de los usuarios de BehavePassUAM. ')
 
@@ -304,13 +304,13 @@ def render_tap_tab_json(json_usuario, lang):
                     if velocidad_usuario != -1:                
                         graficar_distribucion_probabilidad(velocidad_usuario,lang)                
                         if velocidad_usuario < 300.0:
-                            TextoVelocidad = f'<b>Impressive!</b> Your reaction speed in this session ({velocidad_usuario}ms) is well above the average of BehavePassUAM users.'
+                            TextoVelocidad = f'<b>Impressive!</b> Your reaction speed in this session ({velocidad_usuario.round()}ms) is well above the average of BehavePassUAM users.'
                             st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
                         elif 300.0 <= velocidad_usuario <= 600.0:
-                            TextoVelocidad = f'Your reaction speed in this session ({velocidad_usuario}ms) is within the average range (300ms - 600ms) of BehavePassUAM users.'
+                            TextoVelocidad = f'Your reaction speed in this session ({velocidad_usuario.round()}ms) is within the average range (300ms - 600ms) of BehavePassUAM users.'
                             st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
                         elif velocidad_usuario > 600.0:
-                            TextoVelocidad = f'Your reaction speed in this session ({velocidad_usuario}ms) is below the average of BehavePassUAM users.'
+                            TextoVelocidad = f'Your reaction speed in this session ({velocidad_usuario.round()}ms) is below the average of BehavePassUAM users.'
                             st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
                     else:
                         st.warning(f'Please return after completing session {num_Sesion}.')
