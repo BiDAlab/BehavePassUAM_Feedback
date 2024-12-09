@@ -273,7 +273,7 @@ def render_tap_tab_json(json_usuario, lang):
                             st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
                             #st.write(f'¡Impresionante! Tu velocidad de reacción ({velocidad_usuario.mean().round()}ms) está por encima de la media de los usuarios de BehavePassUAM.')
                         elif velocidad_usuario > 300.0 and 600.0 > velocidad_usuario:
-                            TextoVelocidad=f'Tu velocidad de reacción en esta sesión ({velocidad_usuario.astype(int).round()}ms) está en el rango promedio (300ms - 600ms) de los usuarios de BehavePassUAM.'
+                            TextoVelocidad=f'Tu velocidad de reacción en esta sesión ({round(velocidad_usuario)}ms) está en el rango promedio (300ms - 600ms) de los usuarios de BehavePassUAM.'
                             st.markdown(f'<p style="font-size:18px;">{TextoVelocidad}</p>', unsafe_allow_html=True)
                         elif 600.0 < velocidad_usuario:
                             TextoVelocidad=f'Tu velocidad de reacción en esta sesión ({velocidad_usuario.round()}ms) está por debajo de la media de los usuarios de BehavePassUAM. '
