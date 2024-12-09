@@ -377,11 +377,9 @@ def render_galeria_tab_json(json_usuario, lang, sessionsPerf, lastSessionPer):
 
             if n_correct != -1:
                 st.markdown(f"""
-                    ### Resultados de las preguntas:
-                    - <span style="color:green; font-weight:bold;">Aciertos: {n_correct}</span>
-                    - <span style="color:red; font-weight:bold;">Fallos: {n_incorrect}</span>
+                    ### Results:
+                    - <span style="color:green; font-weight:bold;">Correct: {n_correct}</span>
+                    - <span style="color:red; font-weight:bold;">Incorrect: {n_incorrect}</span>
                     """, unsafe_allow_html=True)
             else:
                 st.warning(f'Come back after completing session {num_Sesion}')
-
-   
