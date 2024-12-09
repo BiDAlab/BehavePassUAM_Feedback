@@ -316,7 +316,7 @@ def render_read_tab_json(json_usuario, lang):
             elif age_pred > 40 and age_pred <= 50:
                 TextoRango = f'40-50 años'
             elif age_pred > 50:
-                TextoRango = f'> 50 años
+                TextoRango = f'> 50 años'
             
             st.markdown(f'<p style="font-size:24px;">{TextoRango}</p>', unsafe_allow_html=True)
 
