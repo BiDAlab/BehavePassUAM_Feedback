@@ -125,20 +125,19 @@ def graficar_distribucion_probabilidad(velocidad_reaccion,lang):
         plt.legend(['Población BehavePass', 'Tu velocidad'], fontsize=6)
     
     else: 
-        # Create the plot
+        # Crear el gráfico
         figura = plt.figure(figsize=(5, 3))
         sns.kdeplot(tiempos_reaccion_filtrados, color='blue', label='Probability Distribution')
 
-        # Calculate and draw the line for the user
-        user_line = calcular_tiempos_reaccion(topo_user)
-        if user_line is not None:
-            plt.axvline(x=user_line.mean(), color='red', linestyle='-', label=f'Your speed: {user_line.mean():.1f} ms')
+        # Calcular y dibujar la línea para el usuario
+        if velocidad_reaccion != -1:
+            plt.axvline(x=velocidad_reaccion, color='red', linestyle='-', label=f'Your speed: {velocidad_reaccion:.1f} ms')
 
         # Labels and title
         plt.title('Reaction Time Distribution', fontsize=12)
         plt.xlabel('Reaction Time (ms)', fontsize=8)
         plt.legend(['BehavePass Population', 'Your Speed'], fontsize=6)
-
+    
 
     # Ocultar el eje vertical
     plt.gca().axes.get_yaxis().set_visible(False)
