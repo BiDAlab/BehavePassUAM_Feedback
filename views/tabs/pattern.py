@@ -231,6 +231,7 @@ def compare_patterns(datos_comp_pattern, lang):
 
 def render_pattern_tab_json(json_usuario, lang, sessionsPerf):
     pattern = int(json_usuario.get("pattern", "unknown").get("match_pattern", "Unknown")) #-1 no existe, 0 no match, 1 match (sí es de los comunes)
+    pattern = 1
     if lang == "es":
         st.title('Patrón de desbloqueo 🔓')
         st.header('¿Sabías que...?')
