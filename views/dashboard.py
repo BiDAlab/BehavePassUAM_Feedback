@@ -14,11 +14,10 @@ import json
 usuario_en = st.query_params.feedback
 usuario = decrypt(usuario_en)
 usuario_file=f'{usuario}/config.json'
-#edadReal, lang =edad_real(usuario_file)
-lang = "en" 
+
 json_usuario = connect_mongodb(usuario)
 lang = json_usuario.get("lang", "Unknown")
-#json_usuario = 1
+lastSessionPer = json_usuario.get("lastSessionsPerformed", "unknown")[-1]
 
 ### Start of Sidebar content ###
 with st.sidebar:
@@ -122,11 +121,7 @@ else:
     
 # Renderizar la pestaña seleccionada
 if st.session_state.selected_tab_id == TabsEnums.SUMMARY.value:
-    average_dtw_distance = json_usuario.get("lastSessionsPerformed", "unknown")[-1]
-    st.warning(f"{average_dtw_distance}")
-    if "s4" in average_dtw_distance:
-        st.warning("Hayyyy")
-    render_summary_tab(lang)
+    render_summary_tab(lang, lastSessionPer)
 elif st.session_state.selected_tab_id == TabsEnums.TAP.value:
     render_tap_tab_json(json_usuario, lang)
 elif st.session_state.selected_tab_id == TabsEnums.READ.value:

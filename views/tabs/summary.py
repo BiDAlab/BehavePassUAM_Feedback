@@ -1,13 +1,7 @@
 import streamlit as st
 from utils import *
 
-def render_summary_tab(lang):
-    usuario_en = st.query_params.feedback
-    usuario = decrypt(usuario_en)
-    usuario_file=f'{usuario}/config.json'
-    edadReal, lang =edad_real(usuario_file)
-    #lang = "en" 
-
+def render_summary_tab(lang, lastSessionPer):
     if lang == "es": #Versión Español
         cols = st.columns([1,3,1], vertical_alignment='center')
         cols[0].write('')
@@ -17,11 +11,8 @@ def render_summary_tab(lang):
             st.subheader('Aquí puedes ver el desempeño de tus sesiones y conocer tus avances')
  
             st.divider()
-            # Sacamos la última sesión para personalizar el mensaje
-            lastSes=ultima_sesion(usuario_file)
-            #lastSes='s3'
-            #st.text(f'La ultima sesion es: {lastSes}')
-            if lastSes=='s1':
+
+            if lastSessionPer=='s1':
                 info_message = """
                 <p style="font-size:20px;">Al finalizar cada sesión, recibirás un <strong>enlace personalizado</strong> con información interesante sobre las pruebas que has realizado. Es <b>importante que <u>NO compartas</u> este enlace</b> con nadie para proteger tu privacidad. 🔒</p>
                 <hr>
@@ -44,7 +35,7 @@ def render_summary_tab(lang):
                     <a href="https://behavepassuam.humanairesearch.com/es" target="_blank" style="text-decoration:none; font-size:20px;">💻 Página Web</a>
                 </p>
                 """
-            elif lastSes=='s2':
+            elif lastSessionPer=='s2':
                 info_message = """
                 <p style="font-size:20px;">Al finalizar cada sesión, recibirás un <strong>enlace personalizado</strong> con información interesante sobre las pruebas que has realizado. Es <b>importante que <u>NO compartas</u> este enlace</b> con nadie para proteger tu privacidad. 🔒</p>
                 <hr>
@@ -68,7 +59,7 @@ def render_summary_tab(lang):
                     <a href="https://behavepassuam.humanairesearch.com/es" target="_blank" style="text-decoration:none; font-size:20px;">💻 Página Web</a>
                 </p>
                 """
-            elif lastSes=='s3':
+            elif lastSessionPer=='s3':
                 info_message = """
                 <p style="font-size:20px;">Al finalizar cada sesión, recibirás un <strong>enlace personalizado</strong> con información interesante sobre las pruebas que has realizado. Es <b>importante que <u>NO compartas</u> este enlace</b> con nadie para proteger tu privacidad. 🔒</p>
                 <hr>
