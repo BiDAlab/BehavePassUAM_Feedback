@@ -284,7 +284,8 @@ def render_tap_tab_json(json_usuario, lang):
                     else:
                         st.warning(f'Vuelve cuando hayas completado la sesión {num_Sesion}')
                         
-                        
+        
+        
                         
     elif lang == "en": #Versión inglés
                 st.title('Tap the mole 🐭')
