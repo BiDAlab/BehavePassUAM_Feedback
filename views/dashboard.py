@@ -124,7 +124,7 @@ else:
 if st.session_state.selected_tab_id == TabsEnums.SUMMARY.value:
     render_summary_tab()
 elif st.session_state.selected_tab_id == TabsEnums.TAP.value:
-    render_tap_tab_json()
+    render_tap_tab_json(json_usuario, lang)
 elif st.session_state.selected_tab_id == TabsEnums.READ.value:
     st.warning(f"{json_usuario}")
     #render_tap_tab_json(json_usuario['response'], lang)
