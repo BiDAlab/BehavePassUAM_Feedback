@@ -122,8 +122,8 @@ else:
     
 # Renderizar la pestaña seleccionada
 if st.session_state.selected_tab_id == TabsEnums.SUMMARY.value:
-    average_dtw_distance = json_usuario.get("lastSessionsPerformed", "unknown")
-    st.warning(f"{average_dtw_distance[-1]}")
+    average_dtw_distance = json_usuario.get("lastSessionsPerformed", "unknown")[-1]
+    st.warning(f"{average_dtw_distance}")
     if "s4" in average_dtw_distance:
         st.warning("Hayyyy")
     render_summary_tab(lang)

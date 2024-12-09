@@ -2,7 +2,13 @@ import streamlit as st
 from utils import *
 
 def render_summary_tab(lang):
-     if lang == "es": #Versión Español
+    usuario_en = st.query_params.feedback
+    usuario = decrypt(usuario_en)
+    usuario_file=f'{usuario}/config.json'
+    edadReal, lang =edad_real(usuario_file)
+    #lang = "en" 
+
+    if lang == "es": #Versión Español
         cols = st.columns([1,3,1], vertical_alignment='center')
         cols[0].write('')
         cols[2].write('')
