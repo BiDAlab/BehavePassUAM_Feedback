@@ -315,9 +315,9 @@ def render_galeria_tab_json(json_usuario, lang, sessionsPerf, lastSessionPer):
             if (atras == 0) & (s4_correct == 4) & (s4_incorrect == 0):
                 st.success(f" 🏆 **¡Increíble!**, ¡Tienes una **memoria visual perfecta**! No has tenido **ningún fallo** y **no has tenido que volver hacia atrás** para volver a ver las imágenes.")
             elif (atras == 0) & (s4_correct == 4) & (s4_incorrect > 0):
-                st.info(f" 😀 **¡Buena!** Lo has hecho bien. Te has **equivocado alguna vez**. Has tenido **{n_incorrectas} {'fallo' if n_incorrectas == 1 else 'fallos'}**. El número de veces que has **vuleto hacia atrás a ver las imagenes es {atras}.**")
+                st.info(f" 😀 **¡Buena!** Lo has hecho bien. Te has **equivocado alguna vez**. Has tenido **{s4_incorrect} {'fallo' if s4_incorrect == 1 else 'fallos'}**. El número de veces que has **vuleto hacia atrás a ver las imagenes es {atras}.**")
             else:
-                st.info(f" ⚠️ **Mejorable** ¡Se que puedes dar más de ti! **Presta más atención a las fotos** la proxima vez. Has tenido **{n_incorrectas} {'fallo' if n_incorrectas == 1 else 'fallos'}** y hemos detectado que has **vuelto {atras} {'vez' if atras == 1 else 'veces'} hacia atrás.**")
+                st.info(f" ⚠️ **Mejorable** ¡Se que puedes dar más de ti! **Presta más atención a las fotos** la proxima vez. Has tenido **{s4_incorrect} {'fallo' if s4_incorrect == 1 else 'fallos'}** y hemos detectado que has **vuelto {atras} {'vez' if atras == 1 else 'veces'} hacia atrás.**")
   
         else: 
             st.warning(f'¿Quieres ver un **análisis más completo** de tu memoria visual? ¡**Vuelve cuando acabes la sesión 4**!')
