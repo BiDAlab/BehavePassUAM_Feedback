@@ -18,6 +18,7 @@ usuario_file=f'{usuario}/config.json'
 json_usuario = connect_mongodb(usuario)
 lang = json_usuario.get("lang", "Unknown")
 lastSessionPer = json_usuario.get("lastSessionsPerformed", "unknown")[-1]
+sessionsPerf = json_usuario.get("lastSessionsPerformed", "unknown")
 
 ### Start of Sidebar content ###
 with st.sidebar:
@@ -129,7 +130,7 @@ elif st.session_state.selected_tab_id == TabsEnums.READ.value:
 elif st.session_state.selected_tab_id == TabsEnums.SIGN.value:
     render_sign_tab_json(json_usuario, lang)
 elif st.session_state.selected_tab_id == TabsEnums.PATTERN.value:
-    render_pattern_tab_json(json_usuario, lang)
+    render_pattern_tab_json(json_usuario, lang, sessionsPerf)
 elif st.session_state.selected_tab_id == TabsEnums.GALLERY.value:
     st.warning(f"{json_usuario}")
     #render_tap_tab_json(json_usuario, lang)
