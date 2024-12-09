@@ -307,7 +307,7 @@ def render_galeria_tab_json(json_usuario, lang, sessionsPerf, lastSessionPer):
 
         # Si la sesión 4 tiene datos, mostramos el contenido inicial
         if lastSessionPer == "s4":
-            atras = int(json_usuario.get("atras", "unknown").get("atras_s4", "Unknown"))
+            atras = int(json_usuario.get("visual_memory", "unknown").get("atras", "unknown").get("atras_s4", "Unknown"))
             TextoFirma = (
                 f'Basandonos en el <strong>número de respuestas incorrectas</strong> como las veces que ha tenido que <strong>volver atrás<strong> a las imágenes para fijarse en los detalles, hemos considerado que tu <strong>memoria visual</strong> es...'
             )
