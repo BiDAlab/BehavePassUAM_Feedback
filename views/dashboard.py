@@ -127,6 +127,7 @@ elif st.session_state.selected_tab_id == TabsEnums.TAP.value:
     render_tap_tab_json(json_usuario, lang)
 elif st.session_state.selected_tab_id == TabsEnums.READ.value:
     st.warning(f"{json_usuario}")
+    render_sign_tab_json(json_usuario, lang)
     #render_tap_tab_json(json_usuario['response'], lang)
 elif st.session_state.selected_tab_id == TabsEnums.SIGN.value:
     st.warning(f"{lang}")
