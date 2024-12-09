@@ -16,8 +16,8 @@ usuario = decrypt(usuario_en)
 usuario_file=f'{usuario}/config.json'
 #edadReal, lang =edad_real(usuario_file)
 lang = "en" 
+a
 json_usuario = connect_mongodb(usuario)
-json_usuario = json_usuario.json()
 lang = json_usuario.get("lang", "Unknown")
 #json_usuario = 1
 
