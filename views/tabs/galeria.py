@@ -281,14 +281,14 @@ def galeria(data_trazo):
 
 
 def render_galeria_tab_json(json_usuario, lang, sessionsPerf, lastSessionPer):
-    s1_correct = int(json_usuario.get("questions", "unknown").get("s1_s1_correct", "Unknown"))
-    s1_incorrect = int(json_usuario.get("questions", "unknown").get("s1_s1_incorrect", "Unknown"))
-    s2_correct = int(json_usuario.get("questions", "unknown").get("s2_s2_correct", "Unknown"))
-    s2_incorrect = int(json_usuario.get("questions", "unknown").get("s2_s2_incorrect", "Unknown"))
-    s3_correct = int(json_usuario.get("questions", "unknown").get("s3_s3_correct", "Unknown"))
-    s3_incorrect = int(json_usuario.get("questions", "unknown").get("s3_s3_incorrect", "Unknown"))
-    s4_correct = int(json_usuario.get("questions", "unknown").get("s4_s4_correct", "Unknown"))
-    s4_incorrect = int(json_usuario.get("questions", "unknown").get("s4_s4_incorrect", "Unknown"))
+    # s1_correct = int(json_usuario.get("questions", "unknown").get("s1_s1_correct", "Unknown"))
+    # s1_incorrect = int(json_usuario.get("questions", "unknown").get("s1_s1_incorrect", "Unknown"))
+    # s2_correct = int(json_usuario.get("questions", "unknown").get("s2_s2_correct", "Unknown"))
+    # s2_incorrect = int(json_usuario.get("questions", "unknown").get("s2_s2_incorrect", "Unknown"))
+    # s3_correct = int(json_usuario.get("questions", "unknown").get("s3_s3_correct", "Unknown"))
+    # s3_incorrect = int(json_usuario.get("questions", "unknown").get("s3_s3_incorrect", "Unknown"))
+    s4_correct = int(json_usuario.get("visual_memory", "unknown").get("questions", "unknown").get("s4_s4_correct", "Unknown"))
+    s4_incorrect = int(json_usuario.get("visual_memory", "unknown").get("questions", "unknown").get("s4_s4_incorrect", "Unknown"))
     
     ## EN ESPAÑOL ##
     if lang == "es":
@@ -326,9 +326,9 @@ def render_galeria_tab_json(json_usuario, lang, sessionsPerf, lastSessionPer):
         for sesion in sessionsPerf:
             num_Sesion = int(sesion[-1])
             st.subheader(f'Datos de la sesión {num_Sesion}', divider=dividers[num_Sesion - 1])
-            n_correct = int(json_usuario.get("questions", "unknown").get(f"s{num_Sesion}_s{num_Sesion}_correct", "Unknown"))
-            n_incorrect = int(json_usuario.get("questions", "unknown").get(f"s{num_Sesion}_s{num_Sesion}_incorrect", "Unknown"))
-            
+            n_correct = int(json_usuario.get("visual_memory", "unknown").get("questions", "unknown").get(f"s{num_Sesion}_s{num_Sesion}_correct", "Unknown"))
+            n_incorrect = int(json_usuario.get("visual_memory", "unknown").get("questions", "unknown").get(f"s{num_Sesion}_s{num_Sesion}_incorrect", "Unknown"))
+
             if not df_answ.empty:
                 st.markdown(f"""
                     ### Resultados de las preguntas:
