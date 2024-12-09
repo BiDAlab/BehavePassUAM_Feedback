@@ -132,4 +132,4 @@ elif st.session_state.selected_tab_id == TabsEnums.SIGN.value:
 elif st.session_state.selected_tab_id == TabsEnums.PATTERN.value:
     render_pattern_tab_json(json_usuario, lang, sessionsPerf)
 elif st.session_state.selected_tab_id == TabsEnums.GALLERY.value:
-    render_gallery_tab_json(json_usuario, lang, sessionsPerf, lastSessionPer)
+    render_galeria_tab_json(json_usuario, lang, sessionsPerf, lastSessionPer)
