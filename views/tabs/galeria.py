@@ -281,8 +281,7 @@ def galeria(data_trazo):
 
 
 def render_galeria_tab_json(json_usuario, lang, sessionsPerf, lastSessionPer):
-    s4_correct = int(json_usuario.get("visual_memory", "unknown").get("questions", "unknown").get("s4_s4_correct", "Unknown"))
-    s4_incorrect = int(json_usuario.get("visual_memory", "unknown").get("questions", "unknown").get("s4_s4_incorrect", "Unknown"))
+    
 
     ## EN ESPAÑOL ##
     if lang == "es":
@@ -293,7 +292,6 @@ def render_galeria_tab_json(json_usuario, lang, sessionsPerf, lastSessionPer):
         <p style="font-size:20px;">Una vez terminada la sesión 4, te haremos un análisis más detallado de tu memoria visual.</p>"""
         st.markdown(f'<p style="font-size:20px;">{TextoInicio}</p>', unsafe_allow_html=True)
 
-        sesiones = ['s1', 's2', 's3', 's4']
         dividers = ['blue', 'green', 'orange', 'red']
 
         # Comprobamos si la sesión 4 está disponible
@@ -301,6 +299,8 @@ def render_galeria_tab_json(json_usuario, lang, sessionsPerf, lastSessionPer):
 
         # Si la sesión 4 tiene datos, mostramos el contenido inicial
         if lastSessionPer == "s4":
+            s4_correct = int(json_usuario.get("visual_memory", "unknown").get("questions", "unknown").get("s4_s4_correct", "Unknown"))
+            s4_incorrect = int(json_usuario.get("visual_memory", "unknown").get("questions", "unknown").get("s4_s4_incorrect", "Unknown"))
             atras = int(json_usuario.get("visual_memory", "unknown").get("atras", "unknown").get("atras_s4", "Unknown"))
             TextoFirma = (
                 f'Basandonos en el <strong>número de respuestas incorrectas</strong> como las veces que ha tenido que <strong>volver atrás<strong> a las imágenes para fijarse en los detalles, hemos considerado que tu <strong>memoria visual</strong> es...'
@@ -342,7 +342,6 @@ def render_galeria_tab_json(json_usuario, lang, sessionsPerf, lastSessionPer):
         <p style="font-size:20px;">Once session 4 is completed, we will make a more detailed analysis of your visual memory.</p>"""
         st.markdown(f'<p style="font-size:20px;">{TextoInicio}</p>', unsafe_allow_html=True)
 
-        sesiones = ['s1', 's2', 's3', 's4']
         dividers = ['blue', 'green', 'orange', 'red']
 
         # Comprobamos si la sesión 4 está disponible
@@ -350,6 +349,8 @@ def render_galeria_tab_json(json_usuario, lang, sessionsPerf, lastSessionPer):
 
         # Si la sesión 4 tiene datos, mostramos el contenido inicial
         if lastSessionPer == "s4":
+            s4_correct = int(json_usuario.get("visual_memory", "unknown").get("questions", "unknown").get("s4_s4_correct", "Unknown"))
+            s4_incorrect = int(json_usuario.get("visual_memory", "unknown").get("questions", "unknown").get("s4_s4_incorrect", "Unknown"))
             atras = int(json_usuario.get("visual_memory", "unknown").get("atras", "unknown").get("atras_s4", "Unknown"))
             TextoFirma = (
                 f'Based on the <strong>number of incorrect answers</strong> as well as the number of times you <strong>revisited</strong> the images to look at the details, we’ve determined that your <strong>visual memory</strong> is...'
