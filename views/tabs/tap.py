@@ -261,8 +261,11 @@ def render_tap_tab_json(json_usuario, lang):
 
                     num_Sesion=int(sesion[-1])
                     st.subheader(f'Datos de la sesión {num_Sesion}', divider=dividers[num_Sesion-1])
-                    velocidad_usuario = datos_tap['reaction_time'][sesion]
-
+                    try:
+                        velocidad_usuario = datos_tap['reaction_time'][sesion]
+                    except:
+                        st.warning(f'Vuelve cuando hayas completado la sesión {num_Sesion}')
+                        
                     # Comprobamos que hay datos para representar
                     if velocidad_usuario != -1:                
                         graficar_distribucion_probabilidad(velocidad_usuario,lang)

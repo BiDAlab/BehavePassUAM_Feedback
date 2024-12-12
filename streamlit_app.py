@@ -52,7 +52,6 @@ if st.session_state.run_once:
 # Sacamos los parametro de la URL participant_id
 participant_id_enc = st.query_params.get("feedback")#, [None])[0]
 
-
 # Verificamos si el ID es válido
 if participant_id_enc:
     # Desencriptamos el usuario
