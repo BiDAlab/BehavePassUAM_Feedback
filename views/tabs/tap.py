@@ -294,8 +294,7 @@ def render_tap_tab_json(json_usuario, lang, sessionsPerf):
                 sesiones = sessionsPerf
                 dividers = ['blue', 'green', 'orange', 'red']
                 datos_tap = json_usuario.get("tap", "Unknown")
-
-
+                
                 for sesion in sesiones:
 
                     num_Sesion=int(sesion[-1])
