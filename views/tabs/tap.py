@@ -299,7 +299,7 @@ def render_tap_tab_json(json_usuario, lang, sessionsPerf):
                 for sesion in sesiones:
 
                     num_Sesion=int(sesion[-1])
-                    st.subheader(f'Datos de la sesión {num_Sesion}', divider=dividers[num_Sesion-1])
+                    st.subheader(f'Session {num_Sesion}', divider=dividers[num_Sesion-1])
                     velocidad_usuario = datos_tap['reaction_time'][sesion]
                 # Comprobamos que hay datos para representar
                     if velocidad_usuario != -1:                
