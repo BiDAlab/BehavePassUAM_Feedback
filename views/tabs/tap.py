@@ -246,12 +246,12 @@ def graficar_distribucion_probabilidad(velocidad_reaccion,lang):
 
                         
                     
-def render_tap_tab_json(json_usuario, lang):
+def render_tap_tab_json(json_usuario, lang, sessionsPerf):
     if lang == "es": #Versión español
                 st.title('Rendimiento en el juego de los topos 🐭')
                 st.header("¡Veamos tu velocidad de reacción 👆 y algunos datos interesantes sobre tu rendimiento!")
 
-                sesiones = ['s1', 's2', 's3', 's4']
+                sesiones = sessionsPerf
                 dividers = ['blue', 'green', 'orange', 'red']
 
                 datos_tap = json_usuario.get("tap", "Unknown")
@@ -261,11 +261,10 @@ def render_tap_tab_json(json_usuario, lang):
 
                     num_Sesion=int(sesion[-1])
                     st.subheader(f'Datos de la sesión {num_Sesion}', divider=dividers[num_Sesion-1])
-                    try:
-                        velocidad_usuario = datos_tap['reaction_time'][sesion]
-                    except:
-                        st.warning(f'Vuelve cuando hayas completado la sesión {num_Sesion}')
-                        
+                    
+                    velocidad_usuario = datos_tap['reaction_time'][sesion]
+                    
+
                     # Comprobamos que hay datos para representar
                     if velocidad_usuario != -1:                
                         graficar_distribucion_probabilidad(velocidad_usuario,lang)
@@ -292,7 +291,7 @@ def render_tap_tab_json(json_usuario, lang):
     elif lang == "en": #Versión inglés
                 st.title('Tap the mole 🐭')
                 st.header("Let's see your reaction speed 👆 and some interesting facts about your performance!")
-                sesiones = ['s1', 's2', 's3', 's4']
+                sesiones = sessionsPerf
                 dividers = ['blue', 'green', 'orange', 'red']
                 datos_tap = json_usuario.get("tap", "Unknown")
 
