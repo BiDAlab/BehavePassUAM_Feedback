@@ -281,8 +281,6 @@ def galeria(data_trazo):
 
 
 def render_galeria_tab_json(json_usuario, lang, sessionsPerf, lastSessionPer):
-    
-
     ## EN ESPAÑOL ##
     if lang == "es":
         st.title('🖼️ Memoria Visual')
