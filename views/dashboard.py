@@ -12,7 +12,7 @@ import json
 
 
 usuario_en = st.query_params.feedback
-env = st.query_params.env
+env = st.query_params.get("env", "P")
 usuario = decrypt(usuario_en)
 usuario_file=f'{usuario}/config.json'
 
