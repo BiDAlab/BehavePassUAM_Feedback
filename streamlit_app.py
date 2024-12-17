@@ -50,7 +50,9 @@ if st.session_state.run_once:
 
 ### Start of get params ####
 # Sacamos los parametro de la URL participant_id
-participant_id_enc = st.query_params.get("feedback")#, [None])[0]
+participant_id_enc = st.query_params.get("feedback")
+participant_env = st.query_params.get("env", "P") #Si el link no tiene env, entonces es de producción
+
 
 # Verificamos si el ID es válido
 if participant_id_enc:

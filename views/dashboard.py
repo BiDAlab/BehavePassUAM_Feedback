@@ -12,10 +12,11 @@ import json
 
 
 usuario_en = st.query_params.feedback
+env = st.query_params.env
 usuario = decrypt(usuario_en)
 usuario_file=f'{usuario}/config.json'
 
-json_usuario = connect_mongodb(usuario)
+json_usuario = connect_mongodb(usuario, env)
 lang = json_usuario.get("lang", "Unknown")
 lastSessionPer = json_usuario.get("lastSessionsPerformed", "unknown")[-1]
 sessionsPerf = json_usuario.get("lastSessionsPerformed", "unknown")
