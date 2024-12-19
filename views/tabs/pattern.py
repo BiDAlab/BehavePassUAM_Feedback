@@ -230,7 +230,14 @@ def compare_patterns(datos_comp_pattern, lang):
             
 
 def render_pattern_tab_json(json_usuario, lang, sessionsPerf):
-    pattern = int(json_usuario.get("pattern", "unknown").get("match_pattern", "Unknown")) #-1 no existe, 0 no match, 1 match (sí es de los comunes)
+    try:
+        pattern = int(json_usuario.get("pattern", "unknown").get("match_pattern", "Unknown")) #-1 no existe, 0 no match, 1 match (sí es de los comunes)
+    except:
+        if lang == "es":
+            st.warning(f'Los resultados del **patrón** se mostrarán cuando hayas acabado la **sesión 3**. Vuelve cuando la hayas acabado.')
+        elif lang == "en":
+            st.warning(f'Pattern results will be shown once you complete session 3. Come back when you have finished.')
+
     if lang == "es":
         st.title('Patrón de desbloqueo 🔓')
         st.header('¿Sabías que...?')
