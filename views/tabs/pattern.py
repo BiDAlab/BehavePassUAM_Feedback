@@ -230,6 +230,7 @@ def compare_patterns(datos_comp_pattern, lang):
             
 
 def render_pattern_tab_json(json_usuario, lang, sessionsPerf):
+    a = 1
     if json_usuario and isinstance(json_usuario, dict):
         try:
             pattern_data = json_usuario.get("pattern", None)
