@@ -9,6 +9,7 @@ from utils import *
 from utils.enums import TabsEnums
 from views.tabs import *
 import json
+import time
 
 
 usuario_en = st.query_params.feedback
@@ -16,7 +17,8 @@ env = st.query_params.get("env", "P")
 usuario = decrypt(usuario_en)
 usuario_file=f'{usuario}/config.json'
 
-json_usuario = connect_mongodb(usuario, env)
+current_time = int(time.time() // 60)
+json_usuario = connect_mongodb(usuario, env, current_time)
 lang = json_usuario.get("lang", "Unknown")
 lastSessionPer = json_usuario.get("lastSessionsPerformed", "unknown")[-1]
 sessionsPerf = json_usuario.get("lastSessionsPerformed", "unknown")

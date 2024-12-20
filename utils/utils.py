@@ -15,8 +15,8 @@ import requests
 
 from .enums import TestFileName
 
-#@st.cache_data(ttl=60)
-def connect_mongodb(user_id, env):
+@st.cache_data
+def connect_mongodb(user_id, env, current_time):
     if env == "P":
         url = "https://sala114-4.tec.uam.es/appfiles/getFeedback"
     elif env == "T":
