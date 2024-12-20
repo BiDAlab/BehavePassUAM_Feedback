@@ -15,13 +15,13 @@ import requests
 
 from .enums import TestFileName
 
-@st.cache_data
+@st.cache_data(ttl=60)
 def connect_mongodb(user_id, env):
     if env == "P":
         url = "https://sala114-4.tec.uam.es/appfiles/getFeedback"
     elif env == "T":
         url = "https://sala114-4.tec.uam.es/appfiles_test/getFeedback"
-        
+
     payload = {"maki": st.secrets["requets"]["maki"], "user_id": user_id}
 
     response = requests.post(url, data=payload)
