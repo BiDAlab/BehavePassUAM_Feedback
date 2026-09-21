@@ -68,7 +68,7 @@ def render_sign_tab_json(json_usuario, lang):
             else:
                 st.warning("⚠️ Tu firma es **simple**, considera si es suficientemente distintiva.")
 
-        elif duracion!= -2 and num_arriba != -2 and total_distance != -2:
+        elif duracion== -2 and num_arriba == -2 and total_distance == -2:
                 st.warning(f'Vaya! Parece que esta vez no vamos a poder mostrarte un análisis de **complejidad**')
 
         else:
@@ -126,7 +126,7 @@ def render_sign_tab_json(json_usuario, lang):
             else:
                 st.warning("⚠️ Your signature is **simple**. Consider whether it’s distinctive enough.")
 
-        elif duracion!= -2 and num_arriba != -2 and total_distance != -2:
+        elif duracion== -2 and num_arriba == -2 and total_distance == -2:
                 st.warning(f'Oh no! It seems that this time we won't be able to show you a **complexity** analysis')
 
         else:
