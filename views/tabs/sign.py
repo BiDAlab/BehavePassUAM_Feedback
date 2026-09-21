@@ -29,7 +29,7 @@ def render_sign_tab_json(json_usuario, lang):
         TextoConsistencia="""<p style="font-size:18px;"><strong>Análisis de Consistencia:</strong> A partir del análisis de la consistencia, examinaremos la capacidad de reproducir la firma de manera similar en diferentes momentos. La consistencia es clave para la autenticidad, ya que, para que una firma sea segura, debe mantener un estilo y patrones reconocibles.</p>"""
         st.markdown(f'<p style="font-size:20px;">{TextoConsistencia}</p>', unsafe_allow_html=True)
         
-        if average_dtw_distance != -1:        
+        if average_dtw_distance >= -1:        
             TextoFirma=f'Analizando el parecido de <strong>dos de tus firmas</strong> hemos conseguido sacar los siguientes resultados sobre la <strong>consistencia</strong> de tu firma.'
             st.markdown(f'<p style="font-size:18px;">{TextoFirma}</p>', unsafe_allow_html=True)
 
@@ -83,7 +83,7 @@ def render_sign_tab_json(json_usuario, lang):
         TextoConsistencia = """<p style="font-size:18px;"><strong>Consistency Analysis:</strong> Through the consistency analysis, we examine your ability to reproduce your signature similarly across different sessions. Consistency is key for authenticity, as a secure signature must maintain recognizable styles and patterns.</p>"""
         st.markdown(f'<p style="font-size:20px;">{TextoConsistencia}</p>', unsafe_allow_html=True)
         
-        if average_dtw_distance != -1:        
+        if average_dtw_distance >= -1:        
             TextoFirma = f'Analyzing the similarity of <strong>two of your signatures</strong>, we have derived the following results about the <strong>consistency</strong> of your signature.'
             st.markdown(f'<p style="font-size:18px;">{TextoFirma}</p>', unsafe_allow_html=True)
 
