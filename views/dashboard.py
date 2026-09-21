@@ -54,7 +54,7 @@ with st.sidebar:
     # Twitter
     st.markdown('''
         <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbehavepassuam" target="_blank" style="text-decoration:none;">
-            🐦 Twitter
+            🐦 X
         </a>
     ''', unsafe_allow_html=True)
 
