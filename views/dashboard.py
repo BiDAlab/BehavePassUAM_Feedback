@@ -19,6 +19,13 @@ usuario_file=f'{usuario}/config.json'
 
 current_time = int(time.time() // 60)
 json_usuario = connect_mongodb(usuario, env, current_time)
+
+if st.query_params.get("debug") == "1":
+    st.write("usuario descifrado:", repr(usuario))
+    st.json(json_usuario)
+    st.stop()
+
+
 lang = json_usuario.get("lang", "Unknown")
 lastSessionPer = json_usuario.get("lastSessionsPerformed", "unknown")[-1]
 sessionsPerf = json_usuario.get("lastSessionsPerformed", "unknown")
