@@ -12,11 +12,11 @@ from utils import *
 
         
 def render_sign_tab_json(json_usuario, lang):
-    average_dtw_distance = json_usuario.get("sign", {}).get("consistency", {}).get("avg_dtw_distance", None) #Medida consistencia
+    average_dtw_distance = json_usuario.get("sign", {}).get("consistency", {}).get("avg_dtw_distance", -1) #Medida consistencia
 
-    duracion = json_usuario.get("sign", {}).get("complexity", {}).get("duracion", None) #Medida complejidad - duracion
-    num_arriba = json_usuario.get("sign", {}).get("complexity", {}).get("num_arriba", None) #Medida complejidad - num_arriba
-    total_distance = json_usuario.get("sign", {}).get("complexity", {}).get("total_distance", None) #Medida complejidad - total_distance
+    duracion = json_usuario.get("sign", {}).get("complexity", {}).get("duracion", -1) #Medida complejidad - duracion
+    num_arriba = json_usuario.get("sign", {}).get("complexity", {}).get("num_arriba", -1) #Medida complejidad - num_arriba
+    total_distance = json_usuario.get("sign", {}).get("complexity", {}).get("total_distance", -1) #Medida complejidad - total_distance
 
     if lang == "es": #Versión Español   
         st.title('✒️ Firma')
@@ -55,7 +55,7 @@ def render_sign_tab_json(json_usuario, lang):
                 st.warning(f'Vaya! Parece que esta vez no vamos a poder mostrarte un análisis de **complejidad**')
                 
         elif duracion!= -1 and num_arriba != -1 and total_distance != -1:
-            TextoFirma=f'A partir de <strong>de las firmas</strong> que realizaste en la <strong>sesión 4</strong> hemos considerado que...'
+            TextoFirma=f'A partir de<strong> las firmas</strong> que realizaste en la <strong>sesión 4</strong> hemos considerado que...'
             st.markdown(f'<p style="font-size:18px;">{TextoFirma}</p>', unsafe_allow_html=True)
 
 
@@ -109,8 +109,10 @@ def render_sign_tab_json(json_usuario, lang):
         TextoComplejidad = """<p style="font-size:18px;"><strong>Complexity Analysis:</strong> Through complexity analysis, we explore what makes your signature difficult to replicate. This includes factors such as the speed of execution, the number of strokes used, and other unique traits. The more complex your signature is, the harder it is for someone else to replicate. Complexity ensures that your signature is unique and distinctive.</p>"""
         st.markdown(f'<p style="font-size:20px;">{TextoComplejidad}</p>', unsafe_allow_html=True)
 
-        # Comprobamos que hay datos para representar
-        if duracion!= -1 and num_arriba != -1 and total_distance != -1:
+        if duracion== -2 and num_arriba == -2 and total_distance == -2:
+                st.warning(f"Oh no! It seems that this time we won't be able to show you a **complexity** analysis")
+
+        elif duracion!= -1 and num_arriba != -1 and total_distance != -1:
             TextoFirma = f'Based on the <strong>signatures</strong> you provided during <strong>session 4</strong>, we have determined that...'
             st.markdown(f'<p style="font-size:18px;">{TextoFirma}</p>', unsafe_allow_html=True)
 
@@ -129,9 +131,7 @@ def render_sign_tab_json(json_usuario, lang):
             else:
                 st.warning("⚠️ Your signature is **simple**. Consider whether it’s distinctive enough.")
 
-        elif duracion== -2 and num_arriba == -2 and total_distance == -2:
-                st.warning(f'Oh no! It seems that this time we won't be able to show you a **complexity** analysis')
-
+        
         else:
             st.warning(f'**Complexity** will be displayed once you complete **session 4**. Please return after finishing it.')
 
