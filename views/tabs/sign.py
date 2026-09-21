@@ -52,7 +52,7 @@ def render_sign_tab_json(json_usuario, lang):
         # Comprobamos que hay datos para representar
 
         if duracion== -2 and num_arriba == -2 and total_distance == -2:
-                st.warning(f'Vaya! Parece que esta vez no vamos a poder mostrarte un análisis de **complejidad**')
+                st.warning(f'¡Vaya! Parece que esta vez no vamos a poder mostrarte un análisis de **complejidad**.')
                 
         elif duracion!= -1 and num_arriba != -1 and total_distance != -1:
             TextoFirma=f'A partir de<strong> las firmas</strong> que realizaste en la <strong>sesión 4</strong> hemos considerado que...'
@@ -110,7 +110,7 @@ def render_sign_tab_json(json_usuario, lang):
         st.markdown(f'<p style="font-size:20px;">{TextoComplejidad}</p>', unsafe_allow_html=True)
 
         if duracion== -2 and num_arriba == -2 and total_distance == -2:
-                st.warning(f"Oh no! It seems that this time we won't be able to show you a **complexity** analysis")
+                st.warning(f"Oh no! It seems that this time we won't be able to show you a **complexity** analysis.")
 
         elif duracion!= -1 and num_arriba != -1 and total_distance != -1:
             TextoFirma = f'Based on the <strong>signatures</strong> you provided during <strong>session 4</strong>, we have determined that...'
