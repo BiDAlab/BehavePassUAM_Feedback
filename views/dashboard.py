@@ -50,13 +50,6 @@ with st.sidebar:
     else:
         st.title("Follow us on social media")
 
-    # Twitter
-    st.markdown('''
-        <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbehavepassuam" target="_blank" style="text-decoration:none;">
-            🐦 X
-        </a>
-    ''', unsafe_allow_html=True)
-
     # Instagram
     st.markdown('''
         <a href="https://www.instagram.com/behavepassuam/?igsh=OHk5OXlnZG90cGFv" target="_blank" style="text-decoration:none;">
@@ -64,6 +57,14 @@ with st.sidebar:
         </a>
     ''', unsafe_allow_html=True)
 
+    # Twitter
+    st.markdown('''
+        <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbehavepassuam" target="_blank" style="text-decoration:none;">
+            🐦 X
+        </a>
+    ''', unsafe_allow_html=True)
+
+    
     # Facebook
     st.markdown('''
         <a href="https://www.facebook.com/people/Behavepassuam/61567187651116/" target="_blank" style="text-decoration:none;">
