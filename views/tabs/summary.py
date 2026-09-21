@@ -29,10 +29,10 @@ def render_summary_tab(lang, lastSessionPer):
                 <hr>
                 <p style="font-size:20px; text-align:center;">Síguenos en nuestras redes sociales:</p>
                 <p style="font-size:20px; text-align:center;">
-                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbehavepassuam" target="_blank" style="text-decoration:none; font-size:20px;">🐦 Twitter</a><br>
                     <a href="https://www.instagram.com/behavepassuam/?igsh=OHk5OXlnZG90cGFv" target="_blank" style="text-decoration:none; font-size:20px;">📸 Instagram</a><br>
+                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbehavepassuam" target="_blank" style="text-decoration:none; font-size:20px;">🐦 X</a><br>
                     <a href="https://www.facebook.com/people/Behavepassuam/61567187651116/" target="_blank" style="text-decoration:none; font-size:20px;">📘 Facebook</a><br>
-                    <a href="https://behavepassuam.humanairesearch.com/es" target="_blank" style="text-decoration:none; font-size:20px;">💻 Página Web</a>
+                    <a href="https://behavepassuam.humanairesearch.com/es" target="_blank" style="text-decoration:none; font-size:20px;">💻 Web page</a>
                 </p>
                 """
             elif lastSessionPer=='s2':
@@ -53,10 +53,10 @@ def render_summary_tab(lang, lastSessionPer):
                 <hr>
                 <p style="font-size:20px; text-align:center;">Síguenos en nuestras redes sociales:</p>
                 <p style="font-size:20px; text-align:center;">
-                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbehavepassuam" target="_blank" style="text-decoration:none; font-size:20px;">🐦 Twitter</a><br>
                     <a href="https://www.instagram.com/behavepassuam/?igsh=OHk5OXlnZG90cGFv" target="_blank" style="text-decoration:none; font-size:20px;">📸 Instagram</a><br>
+                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbehavepassuam" target="_blank" style="text-decoration:none; font-size:20px;">🐦 X</a><br>
                     <a href="https://www.facebook.com/people/Behavepassuam/61567187651116/" target="_blank" style="text-decoration:none; font-size:20px;">📘 Facebook</a><br>
-                    <a href="https://behavepassuam.humanairesearch.com/es" target="_blank" style="text-decoration:none; font-size:20px;">💻 Página Web</a>
+                    <a href="https://behavepassuam.humanairesearch.com/es" target="_blank" style="text-decoration:none; font-size:20px;">💻 Web page</a>
                 </p>
                 """
             elif lastSessionPer=='s3':
@@ -77,10 +77,10 @@ def render_summary_tab(lang, lastSessionPer):
                 <hr>
                 <p style="font-size:20px; text-align:center;">Síguenos en nuestras redes sociales:</p>
                 <p style="font-size:20px; text-align:center;">
-                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbehavepassuam" target="_blank" style="text-decoration:none; font-size:20px;">🐦 Twitter</a><br>
                     <a href="https://www.instagram.com/behavepassuam/?igsh=OHk5OXlnZG90cGFv" target="_blank" style="text-decoration:none; font-size:20px;">📸 Instagram</a><br>
+                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbehavepassuam" target="_blank" style="text-decoration:none; font-size:20px;">🐦 X</a><br>
                     <a href="https://www.facebook.com/people/Behavepassuam/61567187651116/" target="_blank" style="text-decoration:none; font-size:20px;">📘 Facebook</a><br>
-                    <a href="https://behavepassuam.humanairesearch.com/es" target="_blank" style="text-decoration:none; font-size:20px;">💻 Página Web</a>
+                    <a href="https://behavepassuam.humanairesearch.com/es" target="_blank" style="text-decoration:none; font-size:20px;">💻 Web page</a>
                 </p>
                 """
             else:
@@ -98,10 +98,10 @@ def render_summary_tab(lang, lastSessionPer):
                 <hr>
                 <p style="font-size:20px; text-align:center;">Síguenos en nuestras redes sociales:</p>
                 <p style="font-size:20px; text-align:center;">
-                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbehavepassuam" target="_blank" style="text-decoration:none; font-size:20px;">🐦 Twitter</a><br>
                     <a href="https://www.instagram.com/behavepassuam/?igsh=OHk5OXlnZG90cGFv" target="_blank" style="text-decoration:none; font-size:20px;">📸 Instagram</a><br>
+                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbehavepassuam" target="_blank" style="text-decoration:none; font-size:20px;">🐦 X</a><br>
                     <a href="https://www.facebook.com/people/Behavepassuam/61567187651116/" target="_blank" style="text-decoration:none; font-size:20px;">📘 Facebook</a><br>
-                    <a href="https://behavepassuam.humanairesearch.com/es" target="_blank" style="text-decoration:none; font-size:20px;">💻 Página Web</a>
+                    <a href="https://behavepassuam.humanairesearch.com/es" target="_blank" style="text-decoration:none; font-size:20px;">💻 Web page</a>
                 </p>
                 """
 
@@ -138,8 +138,8 @@ def render_summary_tab(lang, lastSessionPer):
                 <hr>
                 <p style="font-size:20px; text-align:center;">Follow us on our social media:</p>
                 <p style="font-size:20px; text-align:center;">
-                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbehavepassuam" target="_blank" style="text-decoration:none; font-size:20px;">🐦 Twitter</a><br>
                     <a href="https://www.instagram.com/behavepassuam/?igsh=OHk5OXlnZG90cGFv" target="_blank" style="text-decoration:none; font-size:20px;">📸 Instagram</a><br>
+                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbehavepassuam" target="_blank" style="text-decoration:none; font-size:20px;">🐦 X</a><br>
                     <a href="https://www.facebook.com/people/Behavepassuam/61567187651116/" target="_blank" style="text-decoration:none; font-size:20px;">📘 Facebook</a><br>
                     <a href="https://behavepassuam.humanairesearch.com/es" target="_blank" style="text-decoration:none; font-size:20px;">💻 Web page</a>
                 </p>
@@ -162,8 +162,8 @@ def render_summary_tab(lang, lastSessionPer):
                 <hr>
                 <p style="font-size:20px; text-align:center;">Follow us on our social media:</p>
                 <p style="font-size:20px; text-align:center;">
-                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbehavepassuam" target="_blank" style="text-decoration:none; font-size:20px;">🐦 Twitter</a><br>
                     <a href="https://www.instagram.com/behavepassuam/?igsh=OHk5OXlnZG90cGFv" target="_blank" style="text-decoration:none; font-size:20px;">📸 Instagram</a><br>
+                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbehavepassuam" target="_blank" style="text-decoration:none; font-size:20px;">🐦 X</a><br>
                     <a href="https://www.facebook.com/people/Behavepassuam/61567187651116/" target="_blank" style="text-decoration:none; font-size:20px;">📘 Facebook</a><br>
                     <a href="https://behavepassuam.humanairesearch.com/es" target="_blank" style="text-decoration:none; font-size:20px;">💻 Web page</a>
                 </p>
@@ -186,8 +186,8 @@ def render_summary_tab(lang, lastSessionPer):
                 <hr>
                 <p style="font-size:20px; text-align:center;">Follow us on our social media:</p>
                 <p style="font-size:20px; text-align:center;">
-                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbehavepassuam" target="_blank" style="text-decoration:none; font-size:20px;">🐦 Twitter</a><br>
                     <a href="https://www.instagram.com/behavepassuam/?igsh=OHk5OXlnZG90cGFv" target="_blank" style="text-decoration:none; font-size:20px;">📸 Instagram</a><br>
+                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbehavepassuam" target="_blank" style="text-decoration:none; font-size:20px;">🐦 X</a><br>
                     <a href="https://www.facebook.com/people/Behavepassuam/61567187651116/" target="_blank" style="text-decoration:none; font-size:20px;">📘 Facebook</a><br>
                     <a href="https://behavepassuam.humanairesearch.com/es" target="_blank" style="text-decoration:none; font-size:20px;">💻 Web page</a>
                 </p>
@@ -207,8 +207,8 @@ def render_summary_tab(lang, lastSessionPer):
                 <hr>
                 <p style="font-size:20px; text-align:center;">Follow us on our social media:</p>
                 <p style="font-size:20px; text-align:center;">
-                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbehavepassuam" target="_blank" style="text-decoration:none; font-size:20px;">🐦 Twitter</a><br>
                     <a href="https://www.instagram.com/behavepassuam/?igsh=OHk5OXlnZG90cGFv" target="_blank" style="text-decoration:none; font-size:20px;">📸 Instagram</a><br>
+                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fbehavepassuam" target="_blank" style="text-decoration:none; font-size:20px;">🐦 X</a><br>
                     <a href="https://www.facebook.com/people/Behavepassuam/61567187651116/" target="_blank" style="text-decoration:none; font-size:20px;">📘 Facebook</a><br>
                     <a href="https://behavepassuam.humanairesearch.com/es" target="_blank" style="text-decoration:none; font-size:20px;">💻 Web page</a>
                 </p>
